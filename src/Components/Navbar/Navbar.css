@@ -14,11 +14,6 @@
     cursor: pointer;
 }
 
-.fa-wave-square {
-    margin-left: 0.5rem;
-    font-size: 1.6rem;
-}
-
 .nav-menu {
     display: grid;
     grid-template-columns: repeat(3, auto);
