@@ -1,5 +1,5 @@
-import SearchBar from "../../SearchBar/SearchBar"
-import "../../../App.css"
+import SearchBar from "../../Components/SearchBar/SearchBar"
+import "../../App.css"
 import"./Home.css"
 
 function home() {
@@ -14,5 +14,5 @@ function home() {
     )
 }
 
-export default home
+export default home;
 
