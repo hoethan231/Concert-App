@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Routes, Route } from "react-router-dom";
 
 import Home from "./Pages/Home/Home"
 import AboutUs from "./Pages/AboutUs/AboutUs"
@@ -10,23 +10,23 @@ function Routing() {
     const routes = [
 
         { Component: Home, path: '/' },
-        { Component: AboutUs, path: '/AboutUs' },
-        { Component: Concerts, path: '/Concerts' }
+        { Component: AboutUs, path: '/about-us' },
+        { Component: Concerts, path: '/concerts' }
 
     ]
 
     return (
-        <Router>
-            <Routes>
-                {routes.map(({path, Component}, index) => (
+        <Routes>
+            {routes.map(({path, Component}, index) => {
+                return (
                     <Route 
                     key = {index} 
                     path = {path} 
-                    component = {Component}
+                    element = {Component}
                     />
-                ))}
-            </Routes>
-        </Router>
+                )
+                })}
+        </Routes>
     )
 }
 
