@@ -2,7 +2,7 @@ import SearchBar from "../../Components/SearchBar/SearchBar"
 import "../../App.css"
 import"./Home.css"
 
-function home() {
+function Home() {
     return (
         <div className="home-container">
             <h1 className="tagline">FIND CONCERTS NEAR YOU</h1>
@@ -14,5 +14,5 @@ function home() {
     )
 }
 
-export default home;
+export default Home;
 
