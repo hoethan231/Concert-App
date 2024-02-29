@@ -1,8 +1,7 @@
 import React, { useState } from "react"
-import { MenuItems } from "./MenuItems"
 import { Button } from "./Button"
+import {routes} from '../../Routing'
 import "./Navbar.css"
-import { BrowserRouter as Routes, Route } from "react-router-dom";
 
 
 function Navbar() {
@@ -16,16 +15,15 @@ function Navbar() {
                 <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
             </div>
             <ul className={clicked ? "nav-menu active" : "nav-menu"}>
-                {/* {MenuItems.map((item, index) => {
+                {routes.map((item, index) => {
                     return (
                         <li key={index}>
-                            <a className={item.cName} href={item.url}>
+                            <a className={item.cName} href={item.path}>
                                 {item.title}
                             </a>
                         </li>
                     )
-                })} */}
-                <Routes><Route path={"/"}/></Routes>
+                })}
             </ul>
             <Button>LOG IN</Button>
         </nav>
