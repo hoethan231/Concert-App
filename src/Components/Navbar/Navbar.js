@@ -10,7 +10,7 @@ function Navbar() {
 
     return(
         <nav className="NavbarItems">
-            <h1 className = "navbar-logo" href="/">RESONATE</h1>
+            <h1><a className = "navbar-logo" href="/">RESONATE</a></h1>
             <div className="menu-icon" onClick ={() =>setClicked(!clicked)}>
                 <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
             </div>

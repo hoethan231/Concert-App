@@ -12,6 +12,7 @@
     justify-self: start;
     margin-left: 15px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .nav-menu {
