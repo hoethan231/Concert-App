@@ -9,7 +9,7 @@ export const routes = [
     { 
         Component: Home, 
         path: '/',
-        title: "Resonate",
+        title: "",
         cName: ""
     },
     { 
