@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"; 
 import { config } from "../config"
+import ConcertCard from "../Components/ConcertCard/ConcertCard.jsx"
 
 const API_URL = "https://app.ticketmaster.com/discovery/v2/events.json?"
 const API_KEY = "&apikey=" + config.concert_key;
@@ -36,16 +37,14 @@ function Concerts({ userCity }) {
     }
   
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <div>Error: {error.message}</div>
     }
   
     return (
         <div>
-            {concerts.map((concert, index) => {
+            {concerts.map((concert) => {
                 return (
-                    <div key={index}>
-                        {concert.name}
-                    </div>
+                  <ConcertCard concert={concert}/>
                 )
             })}
         </div>
