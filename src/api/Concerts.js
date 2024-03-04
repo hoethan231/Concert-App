@@ -1,45 +1,55 @@
-import { useState } from "react"; 
+import { useState, useEffect } from "react"; 
 import { config } from "../config"
 
-const API_URL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=concert&city="
+const API_URL = "https://app.ticketmaster.com/discovery/v2/events.json?"
 const API_KEY = "&apikey=" + config.concert_key;
 
-function Concerts() {
-
+function Concerts({ userCity }) {
     const [concerts, setConcerts] = useState([]);
-
-    const searchConcerts = async (city) => {
-        
-        const response = await fetch(API_URL + city + API_KEY, {method: "GET"})
-            .then(response => {
-                if(!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.log("Fetch error: " + error);
-            })
-        
-        const data = await response;
-        setConcerts(data);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      const searchConcerts = async (city) => {
+        try {
+          setLoading(true);
+          const response = await fetch(API_URL + 'keyword=concert&city=' + city + API_KEY);
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          setConcerts(data._embedded.events);
+          setLoading(false);
+        } catch (error) {
+          setError(error);
+          setLoading(false);
+        }
+      };
+  
+      if (userCity) {
+        searchConcerts(userCity);
+      }
+    }, [userCity]);
+  
+    if (loading) {
+      return <div>Loading...</div>;
     }
-
-    searchConcerts("San Jose"); //debugging
-    console.log(concerts);
+  
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    }
+  
     return (
         <div>
             {concerts.map((concert, index) => {
-                <div key={index}>
-                    {concert}
-                </div>
+                return (
+                    <div key={index}>
+                        {concert.name}
+                    </div>
+                )
             })}
         </div>
-    )
-
-}
-
-export default Concerts;
+    );
+  }
+  
+  export default Concerts;
