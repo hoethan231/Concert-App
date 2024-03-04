@@ -1,18 +1,25 @@
-import React, {useState} from "react"
-import "./SearchBar.css"
+import React, { useState } from "react";
+import "./SearchBar.css";
 
-const SearchBar = () => {
-  const {input, setInput} = useState("")
+const SearchBar = ({ onSearch }) => {
+  
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch(input);
+  };
+
   return (
-    <div className="input-wrapper">
+    <form className="input-wrapper" onSubmit={handleSubmit}>
       <i className="fa-solid fa-magnifying-glass"></i>
       <input 
         placeholder="Search for a city" 
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-    </div>
-  )
-}
+    </form>
+  );
+};
 
-export default SearchBar
+export default SearchBar;
