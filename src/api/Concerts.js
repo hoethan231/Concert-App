@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react"
 import { config } from "../config"
 import ConcertCard from "../Components/ConcertCard/ConcertCard.jsx"
+import "./Concerts.css"
 
-const API_URL = "https://app.ticketmaster.com/discovery/v2/events.json?"
-const API_KEY = "&apikey=" + config.concert_key;
+const API_URL = "https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&locale=*&apikey=" + config.concert_key;
 
 function Concerts({ userCity }) {
     const [concerts, setConcerts] = useState([]);
@@ -14,7 +14,7 @@ function Concerts({ userCity }) {
       const searchConcerts = async (city) => {
         try {
           setLoading(true);
-          const response = await fetch(API_URL + 'keyword=concert&city=' + city + API_KEY);
+          const response = await fetch(API_URL + '&city=' + city);
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
@@ -37,17 +37,23 @@ function Concerts({ userCity }) {
     }
   
     if (error) {
-      return <div>Error: {error.message}</div>
+      return <div>There are no concerts in {userCity}</div>
     }
   
     return (
-        <div>
-            {concerts.map((concert) => {
-                return (
-                  <ConcertCard concert={concert}/>
-                )
+      (concerts?.length > 0) ? (
+        <div className="container">
+          {concerts.map((concert) => {
+            return (
+              <ConcertCard concert={concert}/>
+              )
             })}
         </div>
+      ) : (
+        <div className="empty">
+          <h2>ENTER A CITY TO GET STARTED</h2>
+        </div>
+      )
     );
   }
   
