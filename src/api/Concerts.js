@@ -21,6 +21,7 @@ function Concerts({ userCity }) {
           const data = await response.json();
           setConcerts(data._embedded.events);
           setLoading(false);
+          setError(null);
         } catch (error) {
           setError(error);
           setLoading(false);
