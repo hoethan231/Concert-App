@@ -9,8 +9,8 @@ app.use(express.json());
 
 app.get("/", (request, response) => {
     console.log(request);
-    return response.status(234).send("Welcome to the backend")
-})
+    return response.status(234).send("Welcome to the backend");
+});
 
 app.post("/createUser", async (request, response) => {
     try {
@@ -40,7 +40,7 @@ app.post("/createUser", async (request, response) => {
 
 app.get("/getAllUsers", async (request, response) => {
     try {
-        const users = await User.find({}).select("-__v"); // Exclude the __v field
+        const users = await User.find({});
         return response.status(200).json(users);
     } catch (error) {
         console.log(error);
@@ -48,27 +48,57 @@ app.get("/getAllUsers", async (request, response) => {
     }
 });
 
+app.delete("/deleteUsers/:user/:password", async (request, response) => {
+    try {
+        const result = await User.deleteOne({ user: request.params.user, password: request.params.password });
+        console.log(result);
+
+        if(result.deletedCount === 0) {
+            return response.status(404).send({message: "User was not found "});
+        }
+        return response.status(200).send({message: "User was successfully deleted "});
+    }
+    catch (error) {
+        console.log(error);
+        return response.status(500).send({ message: error.message });
+    }
+});
 
 app.get("/getFavorites/:user/:password", async (request, response) => {
     try {
-        try {
-            const users = await User.find({ user: request.params.user, password: request.params.password }).select("favorites");
-            
-            if(users.length === 0) {
-                return response.status(404).send("User not found");
-            }
-            
-            return response.status(200).send(users[0].favorites);
+        const users = await User.find({ user: request.params.user, password: request.params.password }).select("favorites");
+        
+        if(users.length === 0) {
+            return response.status(404).send("User not found");
         }
-        catch (error) {
-            return response.status(500).send({ message: error.message });
-        }
-
+        
+        return response.status(200).send(users[0].favorites);
     }
     catch (error) {
         console.log({message: error});
+        return response.status(500).send({ message: error.message });
     }
-})
+});
+
+app.put("/addFavorite/:user/:password", async (request, response) => {
+    try {
+        if( !request.body.favorites) {
+            return response.status(400).send({
+                message: "Send all required fields: favorite"
+            });
+        }
+
+        const result = await User.findOneAndUpdate({ user: request.params.user,password: request.params.password },
+                                                    { $addToSet: {favorites: request.body.favorites} },
+                                                    { new: true });
+
+        return response.status(200).send({ message: "Concert has been added"});
+    }
+    catch (error) {
+        console.log(error);
+        return response.status(500).send({ message: error });
+    }
+});
 
 mongoose
     .connect(mongoDBURL)

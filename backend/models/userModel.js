@@ -1,5 +1,4 @@
 import mongoose from "mongoose"
-import { concertSchema } from "./concertModel.js"
 
 const userSchema = mongoose.Schema(
     {
@@ -16,7 +15,7 @@ const userSchema = mongoose.Schema(
             required: false
         },
         favorites: {
-            type: [concertSchema],
+            type: [String],
             required: false
         }
     },
