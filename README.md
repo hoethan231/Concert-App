@@ -15,7 +15,7 @@ To begin, start by cloning the repository:
 First we will be adding our API key in order to make requests to the ticketmaster API. 
 This will allow us to get data on all concerts in the US. 
 
-Navigate to the `/frontend` directiory and add a file named `config.js` with the following code:
+Navigate to the `/frontend` directiory by using the `cd frontend` cmd and add a file named `config.js` with the following code:
 
 ```
 export const config = {
@@ -36,7 +36,7 @@ Then in the interminal run `npm i` in the terminal to install required dependenc
 Next we need to set the *PORT* and the *DATABASE_URL* for our backend. \
 If you want to purely work on the frontend, you can skip this part, but it still recommended to include.
 
-Naviagte to the `/backend` directory and again add a named `config.js` with the following code:
+Naviagte to the `/backend` directory with the `cd backend` cmd and again add a named `config.js` with the following code:
 ```
 export const PORT = 5555;
 
@@ -50,4 +50,20 @@ Then in the interminal run `npm i` in the terminal to install required dependenc
 
 ``npm i``
 
-## Enjoy!
+## Running
+
+To run either the frontend or backend, you need to navigate to the folders using the `cd filepath` command to move into the folder. Then your commands will affect the files inside the folder. These are the following commands to startrun from the source directory:
+
+### Inside frontend:
+```
+cd ./frontend
+npm start
+```
+### Inside backend:
+To run the backend: 
+```
+cd ./backend
+npm run dev
+```
+
+
