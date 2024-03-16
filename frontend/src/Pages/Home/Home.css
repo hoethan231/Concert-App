@@ -1,8 +1,37 @@
-.tagline {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.landingBackground {
+    width: 100%;
+    height: 100vh;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contents {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     text-align: left;
-    margin-left: 10rem;
+}
+
+.tagline {
     font-size: 5rem;
+    color: #F9F8F8;
+}
+
+.tagline span {
+    color: #82B8BB;
+}
+
+.subtext{
+    margin-top: 20px;
+    color: #F9F8F8;
+}
+
+.city-search {
+    margin-top: 20px;
 }

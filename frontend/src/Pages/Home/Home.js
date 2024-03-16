@@ -1,8 +1,10 @@
 import { useState } from "react"
 import SearchBar from "../../Components/SearchBar/SearchBar"
 import Concerts from "../../api/Concerts.js"
+import videoBg from "../../assets/background.mp4"
 import "../../App.css"
 import"./Home.css"
+
 
 function Home() {
 
@@ -14,11 +16,16 @@ function Home() {
 
     return (
         <div className="home-container">
-            <h1 className="tagline">FIND CONCERTS NEAR YOU</h1>
-            <p>The ultimate distination to concert exploration</p>
-            <div className="city-search">
-                <SearchBar onSearch={handleSubmit}/>
-                <Concerts userCity={searchQuery}/>
+            <div className="landingBackground">
+                <video src={videoBg} autoPlay loop muted />
+            </div>
+            <div className="contents">
+                <h1 className="tagline">FIND <span>CONCERTS</span> <br/> NEAR YOU</h1>
+                <p className="subtext">The ultimate distination for concert exploration</p>
+                <div className="city-search">
+                    <SearchBar onSearch={handleSubmit}/>
+                    <Concerts userCity={searchQuery}/>
+                </div> 
             </div>
         </div>
     )
