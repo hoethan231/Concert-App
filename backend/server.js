@@ -15,21 +15,22 @@ app.get("/", (request, response) => {
 app.post("/createUser", async (request, response) => {
     try {
 
-        if( !request.body.user || !request.body.password ) {
+        if( !request.body.first || !request.body.last || !request.body.password || !request.body.email ) {
             return response.status(400).send({
-                message: "Send all required fields: User & Password"
+                message: "Send all required fields: First, Last, Password, Email"
             });
         }
 
         const newUser = {
-            user: request.body.user,
+            first: request.body.first,
+            last: request.body.last,
             password: request.body.password,
             email: request.body.email,
             favorites: []
         }
 
         const user = await User.create(newUser);
-        return response.status(200).send({ message: `${newUser.user} is now a user ` });
+        return response.status(200).send({ message: `${newUser.first} is now a user ` });
 
     } 
     catch (error) {
@@ -48,9 +49,9 @@ app.get("/getAllUsers", async (request, response) => {
     }
 });
 
-app.delete("/deleteUsers/:user/:password", async (request, response) => {
+app.delete("/deleteUsers/:email/:password", async (request, response) => {
     try {
-        const result = await User.deleteOne({ user: request.params.user, password: request.params.password });
+        const result = await User.deleteOne({ email: request.params.email, password: request.params.password });
         console.log(result);
 
         if(result.deletedCount === 0) {
@@ -64,15 +65,15 @@ app.delete("/deleteUsers/:user/:password", async (request, response) => {
     }
 });
 
-app.get("/getFavorites/:user/:password", async (request, response) => {
+app.get("/getFavorites/:email/:password", async (request, response) => {
     try {
-        const users = await User.find({ user: request.params.user, password: request.params.password }).select("favorites");
+        const user = await User.find({ email: request.params.email, password: request.params.password }).select("favorites");
         
-        if(users.length === 0) {
+        if(user.length === 0) {
             return response.status(404).send("User not found");
         }
         
-        return response.status(200).send(users[0].favorites);
+        return response.status(200).send(user[0].favorites);
     }
     catch (error) {
         console.log({message: error});
@@ -80,7 +81,7 @@ app.get("/getFavorites/:user/:password", async (request, response) => {
     }
 });
 
-app.put("/addFavorite/:user/:password", async (request, response) => {
+app.put("/addFavorite/:email/:password", async (request, response) => {
     try {
         if( !request.body.favorites) {
             return response.status(400).send({
@@ -88,7 +89,7 @@ app.put("/addFavorite/:user/:password", async (request, response) => {
             });
         }
 
-        const result = await User.findOneAndUpdate({ user: request.params.user,password: request.params.password },
+        const result = await User.findOneAndUpdate({ email: request.params.email,password: request.params.password },
                                                     { $addToSet: {favorites: request.body.favorites} },
                                                     { new: true });
 
