@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import cookieParser from "cookie-parser";
 import { PORT, mongoDBURL } from "./config.js";
-import { createTokens } from "./JWT.js";
+import { createTokens, validateToken } from "./JWT.js";
 import { User } from "./models/userModel.js";
 
 const app = express();
@@ -16,6 +16,51 @@ app.get("/", (request, response) => {
     return response.status(234).send("Welcome to the backend");
 });
 
+app.post("/login", async (request, response) => {
+    try {
+
+        const { email, password } = request.body;
+
+        if(!email || !password) {
+            return response.status(400).send({
+                message: "Send all required fields: Email & Password"
+            });
+        }
+
+        const user = await User.findOne({ email: email });
+        
+        if(!user) {
+            return response.status(400).send({ message: "User not found" });
+        }
+
+        bcrypt.compare(password, user.password).then((match) => {
+            if(!match) {
+                return response.status(400).send({ message: "Incorrect Password"});
+            }
+
+            const accessToken = createTokens(user);
+            return response.status(200).cookie("access-token", accessToken, { maxAge: 180000, httpOnly: true }).send({ message: "Logged in"});
+
+        });
+
+    }
+    catch (error){
+        return response.status(500).send({ message: error.message });
+    }
+});
+
+app.get("/logout", async (request, response) => {
+    try {
+        return response
+                .clearCookie("access-token", { httpOnly: true })
+                .status(200)
+                .send({ message: "User logged out successfully" });
+    }
+    catch (error) {
+        return response.status(500).send({ message: error.message });
+    }
+});
+
 app.post("/createUser", async (request, response) => {
     try {
 
@@ -25,10 +70,12 @@ app.post("/createUser", async (request, response) => {
             });
         }
 
+        const hashedPass = await bcrypt.hash(request.body.password, 10);
+
         const newUser = {
             first: request.body.first,
             last: request.body.last,
-            password: bcrypt.hash(request.body.password, 10),
+            password: hashedPass,
             email: request.body.email,
             favorites: []
         }
@@ -43,38 +90,6 @@ app.post("/createUser", async (request, response) => {
     }
 });
 
-app.post("/login", async (request, response) => {
-    try {
-
-        const { email, pass } = request.body;
-
-        if(!email || !pass) {
-            return response.status(400).send({
-                message: "Send all required fields: Email & Password"
-            });
-        }
-
-        const user = await User.findOne({ email: email });
-        
-        if(!user) {
-            return response.status(400).send({ message: "User not found" });
-        }
-
-        bcrypt.compare(pass, user.password).then((match) => {
-            if(!match) {
-                return response.status(400).send({ message: "Incorrect Password"});
-            }
-
-            const accessToken = createTokens(user);
-            return response.status(200).send({ message: "Logged in"}).cookie("acces-token", accessToken, {maxAge: 18000});
-
-        });
-
-    }
-    catch (error){
-        return response.status(500).send({ message: error.message });
-    }
-})
 
 app.get("/getAllUsers", async (request, response) => {
     try {
@@ -86,12 +101,12 @@ app.get("/getAllUsers", async (request, response) => {
     }
 });
 
-app.delete("/deleteUsers/:email/:password", async (request, response) => {
+app.delete("/deleteUsers", validateToken, async (request, response) => {
     try {
-        const result = await User.deleteOne({ email: request.params.email, password: request.params.password });
-        console.log(result);
 
-        if(result.deletedCount === 0) {
+        const result = await User.findByIdAndDelete(request.userID);
+
+        if(!result) {
             return response.status(404).send({message: "User was not found "});
         }
         return response.status(200).send({message: "User was successfully deleted "});
@@ -104,13 +119,19 @@ app.delete("/deleteUsers/:email/:password", async (request, response) => {
 
 app.get("/getFavorites/:email/:password", async (request, response) => {
     try {
-        const user = await User.find({ email: request.params.email, password: request.params.password }).select("favorites");
+        const user = await User.find({ email: request.params.email });
         
         if(user.length === 0) {
             return response.status(404).send("User not found");
         }
-        
-        return response.status(200).send(user[0].favorites);
+
+        const decodedPass = bcrypt.compare(request.params.password, user[0].password).then((match) => {
+            if(!match) {
+                return response.status(400).send({ message: "Incorrect Password"});
+            }
+            return response.status(200).send(user[0].favorites);
+        });
+
     }
     catch (error) {
         console.log({message: error});
@@ -118,15 +139,15 @@ app.get("/getFavorites/:email/:password", async (request, response) => {
     }
 });
 
-app.put("/addFavorite/:email/:password", async (request, response) => {
+app.put("/addFavorite", validateToken, async (request, response) => {
     try {
-        if( !request.body.favorites) {
+        if(!request.body.favorites) {
             return response.status(400).send({
                 message: "Send all required fields: favorite"
             });
         }
 
-        const result = await User.findOneAndUpdate({ email: request.params.email,password: request.params.password },
+        const result = await User.findByIdAndUpdate( request.userID,
                                                     { $addToSet: {favorites: request.body.favorites} },
                                                     { new: true });
 
