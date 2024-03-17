@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { Button } from "./Button"
 import {routes} from '../../Routing'
 import "./Navbar.css"
 
@@ -25,7 +24,6 @@ function Navbar() {
                     )
                 })}
             </ul>
-            <Button>SIGN UP</Button>
         </nav>
     )
 }

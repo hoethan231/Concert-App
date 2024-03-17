@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./Pages/Home/Home"
 import AboutUs from "./Pages/AboutUs/AboutUs"
 import Concerts from "./Pages/Concerts/Concerts"
-// import LogIn from "./Pages/LogIn/LogIn"
+import Login from "./Pages/Login/Login"
 
 export const routes = [
 
@@ -23,13 +23,13 @@ export const routes = [
         path: '/concerts',
         title: "CONCERTS",
         cName: "nav-links"
+    },
+    { 
+        Component: Login, 
+        path: '/login',
+        title: "LOGIN",
+        cName: "nav-links"
     }
-    // { 
-    //     Component: LogIn, 
-    //     path: '/log-in',
-    //     title: "LOGIN",
-    //     cName: ""
-    // }
 
 ]
 
