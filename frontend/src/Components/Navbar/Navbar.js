@@ -25,7 +25,7 @@ function Navbar() {
                     )
                 })}
             </ul>
-            <Button>LOG IN</Button>
+            <Button>SIGN UP</Button>
         </nav>
     )
 }
