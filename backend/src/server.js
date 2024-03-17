@@ -1,11 +1,15 @@
 import express, { response } from "express";
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+import cookieParser from "cookie-parser";
 import { PORT, mongoDBURL } from "./config.js";
+import { createTokens } from "./JWT.js";
 import { User } from "./models/userModel.js";
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (request, response) => {
     console.log(request);
@@ -24,7 +28,7 @@ app.post("/createUser", async (request, response) => {
         const newUser = {
             first: request.body.first,
             last: request.body.last,
-            password: request.body.password,
+            password: bcrypt.hash(request.body.password, 10),
             email: request.body.email,
             favorites: []
         }
@@ -38,6 +42,39 @@ app.post("/createUser", async (request, response) => {
         response.status(500).send({ message: error.message });
     }
 });
+
+app.post("/login", async (request, response) => {
+    try {
+
+        const { email, pass } = request.body;
+
+        if(!email || !pass) {
+            return response.status(400).send({
+                message: "Send all required fields: Email & Password"
+            });
+        }
+
+        const user = await User.findOne({ email: email });
+        
+        if(!user) {
+            return response.status(400).send({ message: "User not found" });
+        }
+
+        bcrypt.compare(pass, user.password).then((match) => {
+            if(!match) {
+                return response.status(400).send({ message: "Incorrect Password"});
+            }
+
+            const accessToken = createTokens(user);
+            return response.status(200).send({ message: "Logged in"}).cookie("acces-token", accessToken, {maxAge: 18000});
+
+        });
+
+    }
+    catch (error){
+        return response.status(500).send({ message: error.message });
+    }
+})
 
 app.get("/getAllUsers", async (request, response) => {
     try {
