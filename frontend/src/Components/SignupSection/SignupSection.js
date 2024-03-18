@@ -21,13 +21,13 @@ function SignupSection(props) {
         <div className="form">
           <form onSubmit={handleSubmit}>
             <label htmlFor="text">First Name</label>
-            <input type="text" id="first"/>
+            <input className="signup-input" type="text" id="first"/>
             <label htmlFor="text">Last Name</label>
-            <input type="text" id="last"/>
+            <input className="signup-input" type="text" id="last"/>
             <label htmlFor="email">Email</label>
-            <input type="email" id="email"/>
+            <input className="signup-input" type="email" id="email"/>
             <label htmlFor="password">Password</label>
-            <input type="password" id="password"/>
+            <input className="signup-input" type="password" id="password"/>
             <button type="submit">Sign In</button>
           </form>
           <button className="button-login" onClick={() => props.onFormSwitch("login")}>Already have an account? Log in</button>

@@ -20,9 +20,9 @@ function LoginSection(props) {
                 <div className="form">
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email"/>
+                        <input className="login-input" type="email" id="email"/>
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password"/>
+                        <input className="login-input" type="password" id="password"/>
                         <button type="submit">Sign In</button>
                     </form>
                     <button className="signup-button" onClick={() => props.onFormSwitch("signup")}>Don't have an account? Sign up</button>

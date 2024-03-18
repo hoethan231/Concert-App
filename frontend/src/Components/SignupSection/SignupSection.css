@@ -43,7 +43,7 @@ label {
     color: white; 
 }
 
-input {
+.signup-input {
     width: calc(100% - 50px);
     height: 50px;
     background: #FFFFFF;
