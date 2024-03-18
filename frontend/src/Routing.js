@@ -27,7 +27,7 @@ export const routes = [
     { 
         Component: Login, 
         path: '/login',
-        title: "LOGIN",
+        title: "LOG IN",
         cName: "nav-links"
     }
 

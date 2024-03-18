@@ -1,15 +1,16 @@
 .NavbarItems {
-    height: 80px;
+    height: 100px;
     display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    background-color: transparent;
-    position: relative;
 }
 
 .navbar-logo {
-    color: #353535;
+    color: #F9F8F8;
     font-weight: 700;
     justify-self: start;
     margin-left: 15px;
@@ -23,13 +24,14 @@
     grid-gap: 10px;
     list-style: none;
     text-align: center;
+    font-size: 1.3rem;
     width: 70vw;
     justify-content: end;
     margin-right: 2rem;
 }
 
 .nav-links {
-    color:#353535;
+    color:#F9F8F8;
     text-decoration: none;
     padding: 0.5rem 1rem;
     font-weight: 600; 
@@ -40,7 +42,7 @@
 }
 
 .fa-bars {
-    color:#353535;
+    color:#F9F8F8;
 }
 
 .nav-links-mobile {
@@ -51,9 +53,9 @@
     display: none;
 }
 
-@media screen and (max-width: 1010px) {
+/* @media screen and (max-width: 1010px) {
     .NavBarItems {
-        position: relative;
+        position: absolute;
     }
 
     .nav-menu {
@@ -106,7 +108,7 @@
     }
 
     .fa-times {
-        color: #353535;
+        color: #F9F8F8;
         font-size: 2rem;
     }
 
@@ -128,4 +130,4 @@
     Button {
         display: none;
     }
-}
+} */
