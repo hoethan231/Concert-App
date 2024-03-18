@@ -6,7 +6,7 @@ function AboutUs() {
     return (
         <div className="about-page">
             <div className="image">
-
+                <image src/>
             </div>
         <div className="about-us">
             <h1 className="tagline">HELLO!</h1>

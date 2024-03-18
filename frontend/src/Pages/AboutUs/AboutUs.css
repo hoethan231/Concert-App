@@ -1,7 +1,10 @@
 .about-page{
     display: flex;
     justify-content: flex-end;
+    height: 1139px;
+    background: #284B63;
 }
+
 h1 { text-align: left; }
 .about-us{
     margin-top: 200px;
@@ -11,13 +14,16 @@ h1 { text-align: left; }
     height: 45%;
     color: #65A4A8;
 }
-.image{
-    &__image {
-        width: 250px;
-        height: 250 px;
-        float: left;
-    }
-}
+
 .description{
     color: #65A4A8
+}
+
+.image{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    left: 300px;
+    top: 170px;
+    background: #65A4A8;
 }
