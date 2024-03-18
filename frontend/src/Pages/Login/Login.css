@@ -1,12 +1,9 @@
-.login-container {
-    display: flex;
-    justify-content: center;
-}
-
-.welcome {
+.login-signup-container {
     text-align: center;
-}
-
-.form {
-    background-color: bisque;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../assets/background.png");
+    background-size: cover;
 }

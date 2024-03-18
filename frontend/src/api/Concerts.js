@@ -52,7 +52,6 @@ function Concerts({ userCity }) {
         </div>
       ) : (
         <div className="empty">
-          <h2>ENTER A CITY TO GET STARTED</h2>
         </div>
       )
     );

@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import LoginSection from "../../Components/LoginSection/LoginSection"
+import SignupSection from "../../Components/SignupSection/SignupSection"
+import "./Login.css"
 
 function Login() {
+    const [currentForm, setCurrentForm] = useState("login");
 
+    const toggleForm = (formName) => {
+        setCurrentForm(formName);
+    }
+    
     return (
-        <div className="login-container">
-            <div className="welcome">
-                <h1>Welcome Back</h1>
-                <h4>Please enter your details</h4>
-            </div>
-            <div className="form">
-                
-                <input></input>
-            </div>
+        <div className="login-signup-container">
+            {
+                currentForm === "login" ? (
+                <LoginSection onFormSwitch={toggleForm} />
+                ) : (
+                <SignupSection onFormSwitch={toggleForm} />
+            )}
         </div>
     );
 
