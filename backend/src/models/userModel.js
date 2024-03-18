@@ -2,7 +2,11 @@ import mongoose from "mongoose"
 
 const userSchema = mongoose.Schema(
     {
-        user: {
+        first: {
+            type: String,
+            required: true
+        },
+        last: {
             type: String,
             required: true
         },
@@ -12,7 +16,8 @@ const userSchema = mongoose.Schema(
         },
         email: {
             type: String,
-            required: false
+            required: true,
+            unique: true
         },
         favorites: {
             type: [String],
