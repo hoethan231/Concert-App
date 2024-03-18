@@ -4,6 +4,7 @@ import Concerts from "../../api/Concerts.js"
 import videoBg from "../../assets/background2.mp4"
 import "../../App.css"
 import"./Home.css"
+import SeeMoreButton from "../../Components/SeeMoreButton/SeeMoreButton.js"
 
 
 function Home() {
@@ -23,7 +24,7 @@ function Home() {
                 <div className="city-search">
                     <SearchBar onSearch={handleSubmit}/>
                     <Concerts userCity={searchQuery}/>
-                </div> 
+                </div>
             </div>
         </div>
     )
