@@ -2,7 +2,8 @@
     display: flex;
     justify-content: flex-end;
     height: 1139px;
-    background: #284B63;
+    background-image: url("../../assets/background.png");
+    background-size: cover;
 }
 
 h1 { text-align: left; }
