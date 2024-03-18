@@ -12,26 +12,29 @@ function SignupSection(props) {
     }
 
   return (
-    <div className = "signup-container">
+    <div>
       <div className="welcome">
-                <h1>Welcome to Resonate.</h1>
-                <p>Please enter your details</p>
-            </div>
-            <div className="form">
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="text">First Name</label>
-                    <input type="text" id="first"/>
-                    <label htmlFor="text">Last Name</label>
-                    <input type="text" id="last"/>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email"/>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password"/>
-                    <button type="submit">Sign In</button>
-                </form>
-                <button onClick={() => props.onFormSwitch("login")}>Already have an account? Log in</button>
-            </div>
+        <h1>Welcome to Resonate.</h1>
+        <p>Please enter your details</p>
+      </div>
+      <div className="signup-container">
+        <div className="form">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="text">First Name</label>
+            <input type="text" id="first"/>
+            <label htmlFor="text">Last Name</label>
+            <input type="text" id="last"/>
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email"/>
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password"/>
+            <button type="submit">Sign In</button>
+          </form>
+          <button className="button-login" onClick={() => props.onFormSwitch("login")}>Already have an account? Log in</button>
+        </div>
+      </div>
     </div>
+
   )
 }
 
