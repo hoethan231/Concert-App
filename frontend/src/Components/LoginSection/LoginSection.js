@@ -1,13 +1,25 @@
 import React, { useState } from 'react'
+import axios from "axios";
 import "./LoginSection.css"
 
 function LoginSection(props) {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email);
+        try {
+            const data = await axios.post("http://localhost:5555/login", {
+                email: email,
+                password: pass
+            },
+            { withCredentials: true});
+
+        }
+        catch (error) {
+            console.log(error);
+        }
+
     }
 
     return (
@@ -19,9 +31,9 @@ function LoginSection(props) {
             <div className="form">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email"/>
+                    <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password"/>
+                    <input type="password" id="password" value={pass} onChange={(e) => setPass(e.target.value)}/>
                     <button type="submit">Sign In</button>
                 </form>
                 <button onClick={() => props.onFormSwitch("signup")}>Don't have an account? Sign up</button>

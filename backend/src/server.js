@@ -1,5 +1,6 @@
 import express, { response } from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import bcrypt from "bcryptjs";
 import cookieParser from "cookie-parser";
 import { PORT, mongoDBURL } from "./config.js";
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 app.get("/", (request, response) => {
     console.log(request);
@@ -125,7 +127,7 @@ app.get("/getFavorites/:email/:password", async (request, response) => {
             return response.status(404).send("User not found");
         }
 
-        const decodedPass = bcrypt.compare(request.params.password, user[0].password).then((match) => {
+        const decodedPass = bcrypt.compare(user[0].password, request.params.password).then((match) => {
             if(!match) {
                 return response.status(400).send({ message: "Incorrect Password"});
             }
