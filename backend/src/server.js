@@ -41,7 +41,7 @@ app.post("/login", async (request, response) => {
             }
 
             const accessToken = createTokens(user);
-            return response.status(200).cookie("access-token", accessToken, { maxAge: 180000, httpOnly: true }).send({ message: "Logged in"});
+            return response.status(200).cookie("access-token", accessToken, { maxAge: 180000 }).send({ message: "Logged in"});
 
         });
 

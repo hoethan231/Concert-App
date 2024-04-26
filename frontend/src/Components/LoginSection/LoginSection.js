@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'; // Import useHistory from 'react-router-dom'
 import axios from "axios";
 import "./LoginSection.css"
 
 function LoginSection(props) {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -14,7 +16,7 @@ function LoginSection(props) {
                 password: pass
             },
             { withCredentials: true});
-
+            
         }
         catch (error) {
             console.log(error);
