@@ -3,11 +3,12 @@ import "./DropDownMenu.css"
 
 const DropDownMenu = () => {
     return (
-        <div className="container">
+        <div className="dropDownMenu">
             <ul className="list">
-                <li>Profile</li>
-                <li>Saved Concerts</li>
-                <li>LogOut</li>
+                <li>My Profile</li>
+                <hr color="#D9D9D9"></hr>
+                <li>Settings</li>
+                <li>Log Out</li>
             </ul>
         </div>
     )
