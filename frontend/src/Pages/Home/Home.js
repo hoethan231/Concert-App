@@ -17,12 +17,15 @@ function Home() {
 
     return (
         <div className="home-container">
-            <video src={videoBg} autoPlay loop muted />
+            {/* <video src={videoBg} autoPlay loop muted /> */}
             <div className="contents">
                 <h1 className="tagline">FIND <span>CONCERTS</span> <br/> NEAR YOU</h1>
                 <p className="subtext">The ultimate distination for concert exploration</p>
                 <div className="city-search">
                     <SearchBar onSearch={handleSubmit}/>
+                    
+                </div>
+                <div className="">
                     <Concerts userCity={searchQuery}/>
                 </div>
             </div>

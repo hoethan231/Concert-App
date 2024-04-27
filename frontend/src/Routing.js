@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import Home from "./Pages/Home/Home"
 import AboutUs from "./Pages/AboutUs/AboutUs"
 import Concerts from "./Pages/Concerts/Concerts"
 import Login from "./Pages/Login/Login"
+import Profile from "./Pages/Profile/Profile"
 
 export const signedOutRoutes = [
 
@@ -17,12 +17,6 @@ export const signedOutRoutes = [
         Component: AboutUs, 
         path: '/about-us',
         title: "ABOUT",
-        cName: "nav-links"
-    },
-    { 
-        Component: Concerts, 
-        path: '/concerts',
-        title: "CONCERTS",
         cName: "nav-links"
     },
     { 
@@ -55,7 +49,7 @@ export const signedInRoutes = [
         cName: "nav-links"
     },
     { 
-        Component: Login, 
+        Component: Profile, 
         path: '/profile',
         title: "PROFILE",
         cName: ""

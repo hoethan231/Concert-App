@@ -13,6 +13,7 @@ video {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: linear-gradient(45deg,#284B63,#65A4A8);
 }
 
 .contents{
