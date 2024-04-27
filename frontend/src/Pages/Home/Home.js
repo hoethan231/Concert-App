@@ -18,14 +18,18 @@ function Home() {
     return (
         <div className="home-container">
             <video src={videoBg} autoPlay loop muted />
-            <div className="contents">
-                <h1 className="tagline">FIND <span>CONCERTS</span> <br/> NEAR YOU</h1>
+            <div className="fixed-contents">
+                <h1 className="tagline">
+                    FIND <span>CONCERTS</span> <br/> NEAR YOU
+                </h1>
                 <p className="subtext">The ultimate distination for concert exploration</p>
-                <div className="city-search">
+                <div className="search-container">
                     <SearchBar onSearch={handleSubmit}/>
-                    <Concerts userCity={searchQuery}/>
                 </div>
             </div>
+            <div className="concerts-container">
+                <Concerts userCity={searchQuery}/>
+            </div>  
         </div>
     )
 }
