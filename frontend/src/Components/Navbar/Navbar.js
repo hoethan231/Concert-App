@@ -1,11 +1,12 @@
-import React, { useState } from "react"
-import {routes} from '../../Routing'
+import React, { useState, useEffect } from "react"
+import {signedInRoutes, signedOutRoutes} from '../../Routing'
 import "./Navbar.css"
 
 
-function Navbar() {
+function Navbar({isLoggedIn}) {
 
     const [clicked, setClicked] = useState(false);
+    const routes = isLoggedIn ? signedInRoutes : signedOutRoutes;
 
     return(
         <nav className="NavbarItems">

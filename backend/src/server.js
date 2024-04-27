@@ -1,6 +1,7 @@
 import express, { response } from "express";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import { PORT, mongoDBURL } from "./config.js";
 import { createTokens, validateToken } from "./JWT.js";
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 app.get("/", (request, response) => {
     console.log(request);
@@ -39,7 +41,7 @@ app.post("/login", async (request, response) => {
             }
 
             const accessToken = createTokens(user);
-            return response.status(200).cookie("access-token", accessToken, { maxAge: 180000, httpOnly: true }).send({ message: "Logged in"});
+            return response.status(200).cookie("access-token", accessToken, { maxAge: 18000000 }).send({ message: "Logged in"});
 
         });
 
@@ -95,6 +97,16 @@ app.get("/getAllUsers", async (request, response) => {
     try {
         const users = await User.find({});
         return response.status(200).json(users);
+    } catch (error) {
+        console.log(error);
+        return response.status(500).send({ message: error.message });
+    }
+});
+
+app.get("/getUser", validateToken , async (request, response) => {
+    try {
+        const user = await User.findOne({ id: request.userID });
+        return response.status(200).json(user);
     } catch (error) {
         console.log(error);
         return response.status(500).send({ message: error.message });
