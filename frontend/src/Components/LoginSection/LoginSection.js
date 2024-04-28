@@ -18,6 +18,7 @@ function LoginSection(props) {
             },
             { withCredentials: true});
             navigate("/");
+            navigate(0);
         }
         catch (error) {
             console.log(error);

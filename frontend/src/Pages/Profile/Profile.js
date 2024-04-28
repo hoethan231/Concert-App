@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ConcertCard from '../../Components/ConcertCard/ConcertCard';
 import defaultPfp from '../../assets/default_pfp.jpg';
@@ -6,6 +7,7 @@ import { config } from "../../config";
 import "./Profile.css";
 
 function Profile() {
+  const navigate = useNavigate();
   const [concertIds, setConcertIds] = useState([]);
   const [concerts, setConcerts] = useState([]);
 
@@ -35,12 +37,19 @@ function Profile() {
       }
   }, [concertIds]);
 
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    const response = await axios.get('http://localhost:5555/logout', { withCredentials: true });
+    navigate("/");
+    navigate(0);
+  }
+
   return (
       <div className='profile-container'>
           <div className='pfp-container'>
               <img src={defaultPfp} alt="Profile Picture" />
               <h2>PROFILE NAME</h2>
-              <button className='logout'>Log Out</button>
+              <button className='logout' onClick={handleLogout}>Log Out</button>
           </div>
           <div className='saved-concerts-container'>
               <h2>SAVED CONCERTS</h2>
