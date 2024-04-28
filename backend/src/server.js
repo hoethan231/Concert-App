@@ -103,16 +103,6 @@ app.get("/getAllUsers", async (request, response) => {
     }
 });
 
-app.get("/getUser", validateToken , async (request, response) => {
-    try {
-        const user = await User.findOne({ id: request.userID });
-        return response.status(200).json(user);
-    } catch (error) {
-        console.log(error);
-        return response.status(500).send({ message: error.message });
-    }
-});
-
 app.delete("/deleteUsers", validateToken, async (request, response) => {
     try {
 
@@ -129,20 +119,15 @@ app.delete("/deleteUsers", validateToken, async (request, response) => {
     }
 });
 
-app.get("/getFavorites/:email/:password", async (request, response) => {
+app.get("/getFavorites", validateToken, async (request, response) => {
     try {
-        const user = await User.find({ email: request.params.email });
+        const user = await User.findOne({ _id: request.userID });
         
         if(user.length === 0) {
             return response.status(404).send("User not found");
         }
 
-        const decodedPass = bcrypt.compare(request.params.password, user[0].password).then((match) => {
-            if(!match) {
-                return response.status(400).send({ message: "Incorrect Password"});
-            }
-            return response.status(200).send(user[0].favorites);
-        });
+        return response.status(200).send(user.favorites);
 
     }
     catch (error) {

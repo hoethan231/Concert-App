@@ -9,7 +9,6 @@ function App() {
 
     useEffect(() => {
         const cookieExists = document.cookie.includes("access-token");
-        console.log(cookieExists);
         setIsLoggedIn(cookieExists);
     });
 
