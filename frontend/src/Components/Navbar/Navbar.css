@@ -37,6 +37,14 @@
     font-weight: 600; 
 }
 
+.profile-pic {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
 .nav-links:hover {
     color:rgba(53, 53, 53, 0.6);
 }
