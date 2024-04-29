@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./DropDownMenu.css"
 
-const DropDownMenu = () => {
+const DropDownMenu = ({user}) => {
     return (
         <div className="dropDownMenu">
-            <ul className="list">
-                <li>My Profile</li>
-                <hr color="#D9D9D9"></hr>
-                <li>Settings</li>
-                <li>Log Out</li>
+            <ul>
+                {user && <li>{user.first + " " + user.last}</li>}
+                <li><hr color="#D9D9D9"></hr></li>
+                <li className="item">My Profile</li>
+                <li className="item">Settings</li>
+                <li className="item">Log Out</li>
             </ul>
         </div>
     )

@@ -11,14 +11,27 @@
 
 }
 
-.list {
+.dropDownMenu ul {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    padding: 0;
+}
+
+.dropDownMenu ul li{
+    display: flex;
+    flex-direction: column;
     list-style-type: none;
-    text-align: right;
+    text-align: center;
     font-weight: 600;
+    font-size: smaller;
     color: #284B63;
+    transition: var(--speed);
+}
+
+.dropDownMenu ul li:hover{
+    color: aquamarine;
+    cursor: pointer;
 }
 
 .line {

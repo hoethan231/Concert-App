@@ -4,7 +4,7 @@ import defaultPfp from "../../assets/default_pfp.jpg";
 import "./Navbar.css"
 
 
-function Navbar({isLoggedIn}) {
+function Navbar({isLoggedIn, user}) {
 
     const [clicked, setClicked] = useState(false);
     const [openProfile, setOpenProfile] = useState(false);
@@ -23,16 +23,12 @@ function Navbar({isLoggedIn}) {
                     <a className="nav-links" href="/login">LOG IN</a>
                 </li>}
                 {isLoggedIn && <li>
-                    <a className="nav-links" href="/profile" onClick={() => setOpenProfile ((prev) => !prev)}>
+                    <a className="nav-links" onClick={() => setOpenProfile(!openProfile)}>
                         <img className="profile-pic" src={defaultPfp}/>
+                        <div className={`dropdown-menu ${openProfile ? 'active' : 'inactive'}`}><DropDownMenu user={user}/></div>
                     </a>
                 </li>}
             </ul>
-            {
-                openProfile && (
-                    <DropDownMenu/>
-                )
-            }
         </nav>
     )
 }
