@@ -10,12 +10,14 @@ function Profile() {
   const navigate = useNavigate();
   const [concertIds, setConcertIds] = useState([]);
   const [concerts, setConcerts] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
       const fetchFavorites = async () => {
           try {
-              const response = await axios.get('http://localhost:5555/getFavorites', { withCredentials: true });
-              setConcertIds(response.data);
+              const response = await axios.get('http://localhost:5555/getUser', { withCredentials: true });
+              setUser(response.data);
+              setConcertIds(response.data.favorites);
           } catch (error) {
               console.log('Error fetching favorites:', error);
           }
@@ -48,7 +50,7 @@ function Profile() {
       <div className='profile-container'>
           <div className='pfp-container'>
               <img src={defaultPfp} alt="Profile Picture" />
-              <h2>PROFILE NAME</h2>
+              {user && <h2>{(user.first + " " + user.last).toUpperCase()}</h2>}
               <button className='logout' onClick={handleLogout}>Log Out</button>
           </div>
           <div className='saved-concerts-container'>

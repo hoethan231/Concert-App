@@ -119,7 +119,7 @@ app.delete("/deleteUsers", validateToken, async (request, response) => {
     }
 });
 
-app.get("/getFavorites", validateToken, async (request, response) => {
+app.get("/getUser", validateToken, async (request, response) => {
     try {
         const user = await User.findOne({ _id: request.userID });
         
@@ -127,7 +127,7 @@ app.get("/getFavorites", validateToken, async (request, response) => {
             return response.status(404).send("User not found");
         }
 
-        return response.status(200).send(user.favorites);
+        return response.status(200).send(user);
 
     }
     catch (error) {
