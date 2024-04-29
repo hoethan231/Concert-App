@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import "./ConcertCard.css"
+
 
 const ConcertCard = ({ concert }) => {
 
@@ -13,14 +14,21 @@ const ConcertCard = ({ concert }) => {
 
         return "https://via.placeholder.com/400";
     }
+    
+    const [changeColor, setChangeColor] = useState(false)
+    const onHeartClick = () => {
+        setChangeColor(!changeColor)
+    }
 
     return (
     <div className="card">
-        
         <img className="picture" src={get_image(concert)} alt={concert.name}/>
         <h2 >{concert.name}</h2>
         <p>{concert._embedded.venues[0].name}</p>
         <p>{concert.dates.start.localDate}</p>
+        <button onClick = {onHeartClick} className={`heart ${(changeColor === true) ? 'red' : ''}`}>
+            <i class="fa fa-heart"></i>
+        </button>
 
     </div>
     )
