@@ -3,6 +3,7 @@ import Home from "./Pages/Home/Home"
 import AboutUs from "./Pages/AboutUs/AboutUs"
 import Login from "./Pages/Login/Login"
 import Profile from "./Pages/Profile/Profile"
+import Settings from "./Pages/Settings/Settings"
 
 const routes = [
 
@@ -28,6 +29,12 @@ const routes = [
         Component: Profile, 
         path: '/profile',
         title: "PROFILE",
+        cName: "nav-links"
+    },
+    {
+        Component: Settings, 
+        path: '/settings',
+        title: "SETTINGS",
         cName: "nav-links"
     }
 
