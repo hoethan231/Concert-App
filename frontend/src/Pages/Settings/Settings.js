@@ -56,7 +56,7 @@ function Settings() {
               <button className='logout' onClick={handleLogout}>Log Out</button>
           </div>
           <div className="setting-container">
-          <h1>Profile</h1>
+          <h1>PROFILE</h1>
             <div className="form">
               <form onSubmit={handleDelete}>
                 <div class="form-row">
@@ -83,7 +83,7 @@ function Settings() {
                         <input className="setting-text" type="password" id="password" value="********" readOnly/>
                     </div>
                 </div>
-                <button type="submit">Delete account</button>
+                <button className = "delete-btn" type="submit">Delete account</button>
                 <p>Permanently delete your account and all of your content.</p>
               </form>
             </div>

@@ -48,7 +48,7 @@ function SignupSection(props) {
             <input className="signup-input" type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <label htmlFor="password">Password</label>
             <input className="signup-input" type="password" id="password" value={pass} onChange={(e) => setPass(e.target.value)}/>
-            <button type="submit">Sign In</button>
+            <button className="signup-btn" type="submit">Sign Up</button>
           </form>
           <button className="button-login" onClick={() => props.onFormSwitch("login")}>Already have an account? Log in</button>
         </div>
