@@ -6,14 +6,13 @@
     right: 0;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 24px;
 }
 
 .navbar-logo {
     color: #F9F8F8;
     font-weight: 700;
     justify-self: start;
-    margin-left: 15px;
     cursor: pointer;
     text-decoration: none;
 }
@@ -21,11 +20,11 @@
 .nav-menu {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-gap: 10px;
+    grid-gap: 15px;
     list-style: none;
     text-align: center;
     font-size: 1.3rem;
-    width: 70vw;
+    width: 72vw;
     justify-content: end;
     margin-right: 2rem;
 }

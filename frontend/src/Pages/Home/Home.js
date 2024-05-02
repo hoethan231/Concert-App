@@ -17,7 +17,9 @@ function Home() {
 
     return (
         <div className="home-container">
-            <video src={videoBg} autoPlay loop muted />
+            <div className="video-container">
+                <video src={videoBg} autoPlay loop muted />
+            </div>
             <div className="fixed-contents">
                 <h1 className="tagline">
                     FIND <span>CONCERTS</span> <br/> NEAR YOU
@@ -27,9 +29,20 @@ function Home() {
                     <SearchBar onSearch={handleSubmit}/>
                 </div>
             </div>
-            <div className="concerts-container">
-                <Concerts userCity={searchQuery}/>
-            </div>  
+            {searchQuery && (
+                <div className="content-wrapper">
+                    <div className="concerts-container">
+                        <h1 className = "concerts-near">CONCERTS NEAR <br/> <span>SAN JOSE, CA</span></h1>
+                        <Concerts userCity={searchQuery}/>
+                    </div>  
+                    <div className="filter-container">
+                        <h1>Advanced Filter</h1>
+                        <br/>
+                        <div className="filter-dropdown">
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

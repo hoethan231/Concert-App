@@ -26,7 +26,7 @@
     text-align: left;
 }
 
-label {
+.form label {
     font-weight: 600;
     font-size: 1.6rem;
     color: #FFFFFF;
@@ -72,5 +72,3 @@ button[type="submit"],
 .signup-button:hover {
     color: #42757F;
 }
-
-
