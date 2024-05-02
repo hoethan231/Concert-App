@@ -10,6 +10,7 @@ import { User } from "./models/userModel.js";
 const app = express();
 
 app.use(express.json());
+app.use(cors({credentials: true, origin: true, withCredentials: true }));
 app.use(cookieParser());
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 

@@ -7,9 +7,9 @@ const DropDownMenu = ({user}) => {
             <ul>
                 {user && <li>{user.first + " " + user.last}</li>}
                 <li><hr color="#D9D9D9"></hr></li>
-                <li className="item">My Profile</li>
-                <li className="item">Settings</li>
-                <li className="item">Log Out</li>
+                <li className="item" ><a href="/profile">My Profile</a></li>
+                <li className="item"><a href="/settings">Settings</a></li>
+                <li className="item"><a>Log Out</a></li>
             </ul>
         </div>
     )
