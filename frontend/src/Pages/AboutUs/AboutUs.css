@@ -6,7 +6,7 @@
     background-size: cover;
 }
 
-.tagline { text-align: left; }
+h1 { text-align: left; }
 .about-us{
     margin-top: 200px;
     text-align: left;
@@ -16,8 +16,9 @@
     color: #65A4A8;
 }
 
+
 .description{
-    color: #65A4A8
+    color: #ffffff;
 }
 
 .image{
@@ -26,5 +27,6 @@
     height: 400px;
     left: 300px;
     top: 170px;
-    background: #65A4A8;
+    background: #ffffff;
+    box-shadow: 15px 15px 5px #65A4A8;
 }
