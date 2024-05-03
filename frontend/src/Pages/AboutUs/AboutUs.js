@@ -8,7 +8,7 @@ function AboutUs() {
             <div className="image">
                 <image src/>
             </div>
-        <div className="about-us">
+        <div className="about-us-header">
             <h1 className="tagline">HELLO!</h1>
         <p className= "description">
             We are a small team based at SJSU that developed this project for a kickstarter program.
