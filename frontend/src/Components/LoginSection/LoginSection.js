@@ -1,13 +1,29 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import axios from "axios"
 import "./LoginSection.css"
 
 function LoginSection(props) {
+
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email);
+        try {
+            const data = await axios.post("http://localhost:5555/login", {
+                email: email,
+                password: pass
+            },
+            { withCredentials: true});
+            navigate("/");
+            navigate(0);
+        }
+        catch (error) {
+            console.log(error);
+        }
+
     }
 
     return (
@@ -20,10 +36,10 @@ function LoginSection(props) {
                 <div className="form">
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="email">Email</label>
-                        <input className="login-input" type="email" id="email"/>
+                        <input className="login-input" type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         <label htmlFor="password">Password</label>
-                        <input className="login-input" type="password" id="password"/>
-                        <button type="submit">Sign In</button>
+                        <input className="login-input" type="password" id="password" value={pass} onChange={(e) => setPass(e.target.value)}/>
+                        <button className="signin-btn" type='submit'>Sign In</button>
                     </form>
                     <button className="signup-button" onClick={() => props.onFormSwitch("signup")}>Don't have an account? Sign up</button>
                 </div>

@@ -3,7 +3,7 @@ import { config } from "../../src/config.js"
 import ConcertCard from "../../src/Components/ConcertCard/ConcertCard.jsx"
 import "./Concerts.css"
 
-const API_URL = "https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&locale=*&apikey=" + config.concert_key;
+const API_URL = "https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&locale=*&size=12&relevance,asc&apikey=" + config.concert_key;
 
 function Concerts({ userCity }) {
     const [concerts, setConcerts] = useState([]);

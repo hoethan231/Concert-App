@@ -1,6 +1,7 @@
 import express, { response } from "express";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import { PORT, mongoDBURL } from "./config.js";
 import { createTokens, validateToken } from "./JWT.js";
@@ -9,7 +10,9 @@ import { User } from "./models/userModel.js";
 const app = express();
 
 app.use(express.json());
+app.use(cors({credentials: true, origin: true, withCredentials: true }));
 app.use(cookieParser());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 app.get("/", (request, response) => {
     console.log(request);
@@ -39,7 +42,7 @@ app.post("/login", async (request, response) => {
             }
 
             const accessToken = createTokens(user);
-            return response.status(200).cookie("access-token", accessToken, { maxAge: 180000, httpOnly: true }).send({ message: "Logged in"});
+            return response.status(200).cookie("access-token", accessToken, { maxAge: 18000000 }).send({ message: "Logged in"});
 
         });
 
@@ -117,20 +120,15 @@ app.delete("/deleteUsers", validateToken, async (request, response) => {
     }
 });
 
-app.get("/getFavorites/:email/:password", async (request, response) => {
+app.get("/getUser", validateToken, async (request, response) => {
     try {
-        const user = await User.find({ email: request.params.email });
+        const user = await User.findOne({ _id: request.userID });
         
         if(user.length === 0) {
             return response.status(404).send("User not found");
         }
 
-        const decodedPass = bcrypt.compare(request.params.password, user[0].password).then((match) => {
-            if(!match) {
-                return response.status(400).send({ message: "Incorrect Password"});
-            }
-            return response.status(200).send(user[0].favorites);
-        });
+        return response.status(200).send(user);
 
     }
     catch (error) {
@@ -151,6 +149,10 @@ app.put("/addFavorite", validateToken, async (request, response) => {
                                                     { $addToSet: {favorites: request.body.favorites} },
                                                     { new: true });
 
+        if (!result) {
+            return response.status(404).send({ message: "User not found" });
+        }
+
         return response.status(200).send({ message: "Concert has been added"});
     }
     catch (error) {
@@ -158,6 +160,32 @@ app.put("/addFavorite", validateToken, async (request, response) => {
         return response.status(500).send({ message: error });
     }
 });
+
+app.put("/removeFavorite", validateToken, async (request, response) => {
+    try {
+        if (!request.body.favorites) {
+            return response.status(400).send({
+                message: "Send all required fields: favorite"
+            });
+        }
+
+        const result = await User.findByIdAndUpdate(request.userID, 
+            { $pull: { favorites: request.body.favorites } },
+            { new: true }
+        );
+
+        if (!result) {
+            return response.status(404).send({ message: "User not found" });
+        }
+
+        return response.status(200).send({ message: "Concert has been removed" });
+    } 
+    catch (error) {
+        console.log(error);
+        return response.status(500).send({ message: error });
+    }
+});
+
 
 mongoose
     .connect(mongoDBURL)

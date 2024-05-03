@@ -1,14 +1,34 @@
-import React, { useState } from 'react'
-import "./SignupSection.css"
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import "./SignupSection.css";
 
 function SignupSection(props) {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [first, setFirst] = useState("");
     const [last, setLast] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const data = await axios.post("http://localhost:5555/createUser", {
+                first: first,
+                last: last,
+                password: pass,
+                email: email
+            }, { withCredentials: true});
+            const data2 = await axios.post("http://localhost:5555/login", {
+                email: email,
+                password: pass
+            }, { withCredentials: true});
+            navigate("/");
+            navigate(0);
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
 
   return (
@@ -21,14 +41,14 @@ function SignupSection(props) {
         <div className="form">
           <form onSubmit={handleSubmit}>
             <label htmlFor="text">First Name</label>
-            <input className="signup-input" type="text" id="first"/>
+            <input className="signup-input" type="text" id="first" value={first} onChange={(e) => setFirst(e.target.value)}/>
             <label htmlFor="text">Last Name</label>
-            <input className="signup-input" type="text" id="last"/>
+            <input className="signup-input" type="text" id="last" value={last} onChange={(e) => setLast(e.target.value)}/>
             <label htmlFor="email">Email</label>
-            <input className="signup-input" type="email" id="email"/>
+            <input className="signup-input" type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <label htmlFor="password">Password</label>
-            <input className="signup-input" type="password" id="password"/>
-            <button type="submit">Sign In</button>
+            <input className="signup-input" type="password" id="password" value={pass} onChange={(e) => setPass(e.target.value)}/>
+            <button className="signup-btn" type="submit">Sign Up</button>
           </form>
           <button className="button-login" onClick={() => props.onFormSwitch("login")}>Already have an account? Log in</button>
         </div>

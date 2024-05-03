@@ -22,5 +22,32 @@
     color: #284B63;
 }
 
+.heart {
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 27px;
+    color: darkgray;
+    position: absolute;
+    left: 69%;
+    bottom: 81%;
+    cursor: pointer;
+}
 
+.heart .fa{
+  transition: all ease 0.2s;
+}
 
+.heart:hover {
+  border-color: #cc4b37;
+  background-color: transparent;
+}
+
+.heart:hover .fa{
+  color: #cc4b37;
+}
+
+.heart.red {
+    color: #cc4b37;
+}

@@ -6,12 +6,9 @@
     background-size: cover;
 }
 
-h1{ 
-    text-align: left;
-}
-
-.about-us-header{
-    margin-top: 250px;
+h1 { text-align: left; }
+.about-us{
+    margin-top: 200px;
     text-align: left;
     margin-right: 350px;
     width: 25%;

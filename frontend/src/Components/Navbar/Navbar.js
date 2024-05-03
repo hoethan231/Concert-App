@@ -1,11 +1,13 @@
-import React, { useState } from "react"
-import {routes} from '../../Routing'
+import React, { useState, useEffect } from "react"
+import DropDownMenu from "../DropDownMenu/DropDownMenu";
+import defaultPfp from "../../assets/default_pfp.jpg";
 import "./Navbar.css"
 
 
-function Navbar() {
+function Navbar({isLoggedIn, user}) {
 
     const [clicked, setClicked] = useState(false);
+    const [openProfile, setOpenProfile] = useState(false);
 
     return(
         <nav className="NavbarItems">
@@ -14,15 +16,18 @@ function Navbar() {
                 <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
             </div>
             <ul className={clicked ? "nav-menu active" : "nav-menu"}>
-                {routes.map((item, index) => {
-                    return (
-                        <li key={index}>
-                            <a className={item.cName} href={item.path}>
-                                {item.title}
-                            </a>
-                        </li>
-                    )
-                })}
+                <li>
+                    <a className="nav-links" href="/about-us">ABOUT</a>
+                </li>
+                {!isLoggedIn && <li>
+                    <a className="nav-links" href="/login">LOG IN</a>
+                </li>}
+                {isLoggedIn && <li>
+                    <a className="nav-links" onClick={() => setOpenProfile(!openProfile)}>
+                        <img className="profile-pic" src={defaultPfp}/>
+                        <div className={`dropdown-menu ${openProfile ? 'active' : 'inactive'}`}><DropDownMenu user={user}/></div>
+                    </a>
+                </li>}
             </ul>
         </nav>
     )

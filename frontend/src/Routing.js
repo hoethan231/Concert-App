@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./Pages/Home/Home"
 import AboutUs from "./Pages/AboutUs/AboutUs"
-import Concerts from "./Pages/Concerts/Concerts"
 import Login from "./Pages/Login/Login"
+import Profile from "./Pages/Profile/Profile"
+import Settings from "./Pages/Settings/Settings"
 
-export const routes = [
+const routes = [
 
     { 
         Component: Home, 
@@ -19,19 +20,25 @@ export const routes = [
         cName: "nav-links"
     },
     { 
-        Component: Concerts, 
-        path: '/concerts',
-        title: "CONCERTS",
-        cName: "nav-links"
-    },
-    { 
         Component: Login, 
         path: '/login',
         title: "LOG IN",
         cName: "nav-links"
+    },
+    { 
+        Component: Profile, 
+        path: '/profile',
+        title: "PROFILE",
+        cName: "nav-links"
+    },
+    {
+        Component: Settings, 
+        path: '/settings',
+        title: "SETTINGS",
+        cName: "nav-links"
     }
 
-]
+];
 
 export default function Routing() {
 
