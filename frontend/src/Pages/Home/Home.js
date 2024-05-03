@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
 import SearchBar from "../../Components/SearchBar/SearchBar"
 import Concerts from "../../api/Concerts.js"
 import videoBg from "../../assets/background2.mp4"

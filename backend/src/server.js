@@ -149,6 +149,10 @@ app.put("/addFavorite", validateToken, async (request, response) => {
                                                     { $addToSet: {favorites: request.body.favorites} },
                                                     { new: true });
 
+        if (!result) {
+            return response.status(404).send({ message: "User not found" });
+        }
+
         return response.status(200).send({ message: "Concert has been added"});
     }
     catch (error) {
@@ -156,6 +160,32 @@ app.put("/addFavorite", validateToken, async (request, response) => {
         return response.status(500).send({ message: error });
     }
 });
+
+app.put("/removeFavorite", validateToken, async (request, response) => {
+    try {
+        if (!request.body.favorites) {
+            return response.status(400).send({
+                message: "Send all required fields: favorite"
+            });
+        }
+
+        const result = await User.findByIdAndUpdate(request.userID, 
+            { $pull: { favorites: request.body.favorites } },
+            { new: true }
+        );
+
+        if (!result) {
+            return response.status(404).send({ message: "User not found" });
+        }
+
+        return response.status(200).send({ message: "Concert has been removed" });
+    } 
+    catch (error) {
+        console.log(error);
+        return response.status(500).send({ message: error });
+    }
+});
+
 
 mongoose
     .connect(mongoDBURL)
