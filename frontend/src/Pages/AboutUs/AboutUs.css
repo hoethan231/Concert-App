@@ -6,7 +6,13 @@
     background-size: cover;
 }
 
-h1 { text-align: left; }
+.about-us h1 { 
+    color: #65A4A8;
+    font-size: 96px;
+    font-weight: 800;
+    text-align: left; 
+}
+
 .about-us{
     margin-top: 200px;
     text-align: left;

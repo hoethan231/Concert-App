@@ -17,10 +17,32 @@
     width: 200px;
 }
 
-.card > h2 {
+.card h2 {
     font-weight: 800;
     text-align: left;
     color: #284B63;
+    margin-left: 10px;
+
+}
+
+.card p {
+ text-align: left; 
+ margin-left: 10px;
+ color: #284B63;
+ font-weight: 600;
+}
+
+#date {
+  position: absolute;
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(53, 53, 53, 0.9);
+  padding: 3px;
+  border-radius: 7px;
+
 }
 
 .heart {
@@ -47,6 +69,19 @@
 
 .heart:hover .fa{
   color: #cc4b37;
+  animation: anim-heart .3s forwards;
+}
+
+@keyframes anim-heart {
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.10);
+  }
+  100% {
+    transform: scale(1.15);
+  }
 }
 
 .heart.red {

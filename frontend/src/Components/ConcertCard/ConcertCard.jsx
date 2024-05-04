@@ -8,6 +8,7 @@ const ConcertCard = ({ concert }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [favorites, setFavorites] = useState([]);
     const [changeColor, setChangeColor] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
     
     useEffect(() => {
         const cookieExists = document.cookie.includes("access-token");
@@ -49,6 +50,8 @@ const ConcertCard = ({ concert }) => {
                 "favorites": concert.id
             },
             { withCredentials: true });
+            setIsAnimating(true); 
+            setTimeout(() => setIsAnimating(false), 300); 
         } catch (error) {
             console.log('Error adding favorite:', error);
         }
@@ -59,15 +62,20 @@ const ConcertCard = ({ concert }) => {
         setChangeColor(!changeColor);
     }
 
+
+
     return (
     <div className="card">
+        <p id="date">{concert.dates.start.localDate}</p>
         <img className="picture" src={get_image()} alt={concert.name}/>
         <h2 >{concert.name}</h2>
-        <p>{concert._embedded.venues[0].name}</p>
-        <p>{concert.dates.start.localDate}</p>
+        <p id ="venue">{concert._embedded.venues[0].name}</p>
         <p>{isLoggedIn}</p>
-        {isLoggedIn && (<button onClick = {onHeartClick} className={`heart ${((changeColor === true) || isFavorite()) ? 'red' : ''}`}>
-            <i className="fa fa-heart"></i>
+        {isLoggedIn && (
+            <button 
+                onClick = {onHeartClick} 
+                className={`heart ${((changeColor === true) || isFavorite()) ? 'red' : ''}`}>
+                <i className="fa fa-heart"></i>
         </button>)}
 
     </div>
