@@ -21,7 +21,7 @@
     font-weight: 800;
     text-align: left;
     color: #284B63;
-    margin-left: 10px;
+    padding: 5px 10px 5px 10px;
 
 }
 
@@ -32,7 +32,7 @@
  font-weight: 600;
 }
 
-#date {
+#dates {
   position: absolute;
   font-size: 16px;
   color: white;

@@ -83,8 +83,14 @@ function Settings() {
                         <input className="setting-text" type="password" id="password" value="********" readOnly/>
                     </div>
                 </div>
-                <button className = "delete-btn" type="submit">Delete account</button>
-                <p>Permanently delete your account and all of your content.</p>
+                <div className='btn-container'>
+                    <label className='newsletter'>
+                        <input type="checkbox" />
+                        Receive weekly newsletter for concert updates?
+                    </label>
+                    <button type="submit">Delete account</button>
+                    <p>Permanently delete your account and all of your content.</p>
+                </div>
               </form>
             </div>
           </div>

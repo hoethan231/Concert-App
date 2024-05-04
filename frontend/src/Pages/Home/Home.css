@@ -88,10 +88,15 @@ video {
     font-size: 36px;
 }
 
+.radio-btns{
+    display: flex;
+    flex-direction: column;
+}
 
 .radio-btns input[type="radio"] {
     width: 20px;
     margin-right: 10px;
+    
 }
 
 .radio-btns label {

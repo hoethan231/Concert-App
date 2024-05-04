@@ -9,7 +9,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+ savedConcertsFix
     margin-left: 10rem;
+
+ main
 }
 
 .pfp-container img {
@@ -20,6 +23,7 @@
 
 .pfp-container h2 {
     color: #F9F8F8;
+    text-align: center;
     font-weight: 800;
     padding-top: 15px;
 }
@@ -47,7 +51,7 @@
     margin-bottom: 5rem;
 }
 
-.saved-concerts-container h2 {
+.saved-concerts-container h3 {
     color: #82B8BB;
     font-weight: 800;
     font-size: 36px;
@@ -65,10 +69,13 @@
 .saved-concerts {
     background-color: rgba(249, 248, 248, 0.22);
     color: #F9F8F8;
-    border-radius: 23px;;
+    border-radius: 23px;
+    width: 70rem;
+    height: 37rem;
+    padding: 30px;
     overflow-y: auto;
-    padding-top: 16rem;
-    padding-bottom: 16rem;
-    padding-left: 24rem;
-    padding-right: 24rem;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
