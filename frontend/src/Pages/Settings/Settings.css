@@ -80,8 +80,8 @@
     width:50%;
 }
 
-.delete-btn {
-    width: 180px;
+.form button {
+    width: 220px;
     height: 40px;
     border-radius: 11px;
     color: #FF8787;
@@ -90,4 +90,24 @@
     border: 2px solid #FF8787;
     background-color: transparent;
     cursor: pointer;
+    margin-top: 20px;
+}
+
+.form p {
+    margin-top: 10px;
+}
+
+.newsletter {
+    display: flex;
+    align-items: center;
+}
+
+.newsletter input {
+    width: 25px;
+    margin-right: 8px;
+}
+
+.btn-container{
+    display: flex;
+    flex-direction: column;
 }
