@@ -55,6 +55,7 @@ function Profile() {
           </div>
           <div className='saved-concerts-container'>
               <h2>SAVED CONCERTS</h2>
+              <div className='saved-concerts-names'>
               <div className='saved-concerts'>
                   {concerts.length > 0 ? (
                       concerts.map((concert) => (
@@ -63,6 +64,7 @@ function Profile() {
                   ) : (
                       <h3>No concerts saved yet!</h3>
                   )}
+                  </div>
               </div>
           </div>
       </div>
