@@ -9,10 +9,9 @@ video {
     height: auto;
 }
 
-
 .home-container {
     min-height: 100vh;
-    overflow-y: auto;
+    overflow-y: visible;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,6 +21,10 @@ video {
     margin-left: 10rem;
     margin-bottom: 3rem;
     color: #F9F8F8;
+}
+
+.fixed-contents.with-search {
+    margin-top: 190px;
 }
 
 .tagline {
@@ -49,31 +52,33 @@ video {
     font-size: 98px;
     font-weight: 800;
     color: #82B8BB;
-    margin-left: 50px;
+    margin-left: 10px;
 }
 
 .concerts-near span {
     color: #D9D9D9;
     text-decoration: underline;
+    text-transform: uppercase;
 }
 
 .content-wrapper {
     display: flex;
+    margin-top: 500px;
 }
 
 .concerts-container {
     flex: 1;
     max-height: 0px;
-    margin-left: 252px;
+    margin-left: 200px;
 }
 
 .filter-container {
     margin-top: 270px;
-    margin-right: 250px;
-    margin-left: 50px;
+    margin-right: 215px;
+    margin-left: 10px;
     background-color: #D9D9D9;
     background: linear-gradient(180deg, rgba(217,217,217,1) 31%, rgba(0,212,255,0) 100%);
-    padding: 20px 50px 700px 50px;
+    padding: 20px 40px 700px 40px;
     border-radius: 50px;
     color: #284B63;
 }

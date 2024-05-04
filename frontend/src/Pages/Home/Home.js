@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
+import { useState, useRef, useEffect } from "react"
 import SearchBar from "../../Components/SearchBar/SearchBar"
 import Concerts from "../../api/Concerts.js"
 import videoBg from "../../assets/background2.mp4"
@@ -11,9 +10,22 @@ import SeeMoreButton from "../../Components/SeeMoreButton/SeeMoreButton.js"
 function Home() {
 
     const [searchQuery, setSearchQuery] = useState("");
+    const contentWrapperRef = useRef(null);
+
+    useEffect(() => {
+        if(searchQuery) {
+            autoScroll(contentWrapperRef);
+        }
+    }, [searchQuery]);
     
     const handleSubmit = (query) => {
         setSearchQuery(query);
+    }
+
+    const autoScroll = (ref) => {
+        if (ref.current) {
+            ref.current.scrollIntoView({ behavior: "smooth"});
+        }
     }
 
     return (
@@ -21,7 +33,7 @@ function Home() {
             <div className="video-container">
                 <video src={videoBg} autoPlay loop muted />
             </div>
-            <div className="fixed-contents">
+            <div className={`fixed-contents ${searchQuery && 'with-search'}`}>
                 <h1 className="tagline">
                     FIND <span>CONCERTS</span> <br/> NEAR YOU
                 </h1>
@@ -31,9 +43,9 @@ function Home() {
                 </div>
             </div>
             {searchQuery && (
-                <div className="content-wrapper">
+                <div className="content-wrapper" ref={contentWrapperRef}>
                     <div className="concerts-container">
-                        <h1 className = "concerts-near">CONCERTS NEAR <br/> <span>SAN JOSE, CA</span></h1>
+                        <h1 className = "concerts-near">CONCERTS NEAR <br/> <span>{searchQuery}</span></h1>
                         <Concerts userCity={searchQuery}/>
                     </div>  
                     <div className="filter-container">
@@ -42,15 +54,15 @@ function Home() {
                         <div className="radio-btns">
                             <div>
                                 <input type="radio" name="filter" value="relevancy" id="relevancy"/>
-                                <label htmlFor="relevancy">Relevancy</label>
+                                <label htmlFor="relevancy">relevancy</label>
                             </div>
                             <div>
                                 <input type="radio" name="filter" value="date" id="date"/>
-                                <label htmlFor="date">Date</label>
+                                <label htmlFor="date">date</label>
                             </div>
                             <div>
                                 <input type="radio" name="filter" value="name" id="name"/>
-                                <label htmlFor="name">Name</label>
+                                <label htmlFor="name">name</label>
                             </div>
                         </div>
                     </div>
