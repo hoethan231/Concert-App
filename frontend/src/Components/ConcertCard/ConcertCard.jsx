@@ -66,8 +66,9 @@ const ConcertCard = ({ concert }) => {
 
     return (
     <div className="card">
-        <p id="date">{concert.dates.start.localDate}</p>
+        <p id="dates">{concert.dates.start.localDate}</p>
         <img className="picture" src={get_image()} alt={concert.name}/>
+        <p>{concert.dates.start.localTime}</p>
         <h2 >{concert.name}</h2>
         <p id ="venue">{concert._embedded.venues[0].name}</p>
         <p>{isLoggedIn}</p>
