@@ -37,9 +37,21 @@ function Home() {
                         <Concerts userCity={searchQuery}/>
                     </div>  
                     <div className="filter-container">
-                        <h1>Advanced Filter</h1>
+                        <h1>FILTER BY</h1>
                         <br/>
-                        <div className="filter-dropdown">
+                        <div className="radio-btns">
+                            <div>
+                                <input type="radio" name="filter" value="relevancy" id="relevancy"/>
+                                <label htmlFor="relevancy">Relevancy</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="filter" value="date" id="date"/>
+                                <label htmlFor="date">Date</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="filter" value="name" id="name"/>
+                                <label htmlFor="name">Name</label>
+                            </div>
                         </div>
                     </div>
                 </div>
