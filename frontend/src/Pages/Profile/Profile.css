@@ -9,6 +9,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+ savedConcertsFix
+    margin-left: 10rem;
+
+ main
 }
 
 .pfp-container img {
@@ -42,8 +46,9 @@
 }
 
 .saved-concerts-container{
-    margin-left: 15rem;
+    margin-left: 5rem;
     margin-top: 12rem;
+    margin-bottom: 5rem;
 }
 
 .saved-concerts-container h3 {
@@ -53,6 +58,13 @@
     text-shadow: 0px 4px 15.6px rgba(0, 0, 0, 0.25);
     padding: 5px;
 }
+
+.saved-concerts-names h2{
+    color: #284B63;
+    font-weight: 800;
+    font-size: 30px;
+}
+
 
 .saved-concerts {
     background-color: rgba(249, 248, 248, 0.22);

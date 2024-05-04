@@ -37,7 +37,7 @@ function Home() {
                 <h1 className="tagline">
                     FIND <span>CONCERTS</span> <br/> NEAR YOU
                 </h1>
-                <p className="subtext">The ultimate distination for concert exploration</p>
+                <p className="subtext">The ultimate destination for concert exploration</p>
                 <div className="search-container">
                     <SearchBar onSearch={handleSubmit}/>
                 </div>

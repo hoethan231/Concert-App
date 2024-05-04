@@ -54,7 +54,12 @@ function Profile() {
               <button className='logout' onClick={handleLogout}>Log Out</button>
           </div>
           <div className='saved-concerts-container'>
+savedConcertsFix
+              <h2>SAVED CONCERTS</h2>
+              <div className='saved-concerts-names'>
+
               <h3>SAVED CONCERTS</h3>
+main
               <div className='saved-concerts'>
                   {concerts.length > 0 ? (
                       concerts.map((concert) => (
@@ -63,6 +68,7 @@ function Profile() {
                   ) : (
                       <h4>No concerts saved yet!</h4>
                   )}
+                  </div>
               </div>
           </div>
       </div>
