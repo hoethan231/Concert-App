@@ -48,27 +48,15 @@ function Home() {
                 <div className="content-wrapper" ref={contentWrapperRef}>
                     <div className="concerts-container">
                         <h1 className = "concerts-near">CONCERTS NEAR <br/> <span>{searchQuery}</span></h1>
-                        <Concerts userCity={searchQuery}/>
+                        <Concerts userCity={searchQuery} selected={selected}/>
                     </div>  
                     <div className="filter-container">
                         <h1>FILTER BY</h1>
                         <br/>
                         <div className="radio-btns">
                             <Radio value="relevancy" selected={selected} text="relevancy" onChange={setSelected}/>
-                            <Radio value="date" selected={selected} text="date" onChange={setSelected}/>
                             <Radio value="name" selected={selected} text="name" onChange={setSelected}/>
-                            {/* <div>
-                                <input type="radio" name="filter" value="relevancy" id="relevancy" onClick={setFilter}/>
-                                <label className="check" htmlFor="relevancy">relevancy</label>
-                            </div>
-                            <div>
-                                <input type="radio" name="filter" value="date" id="date" onClick={setFilter}/>
-                                <label htmlFor="date">date</label>
-                            </div>
-                            <div>
-                                <input type="radio" name="filter" value="name" id="name" onClick={setFilter}/>
-                                <label htmlFor="name">name</label>
-                            </div> */}
+                            <Radio value="date" selected={selected} text="date" onChange={setSelected}/>
                         </div>
                     </div>
                 </div>
