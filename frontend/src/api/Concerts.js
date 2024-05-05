@@ -3,12 +3,27 @@ import { config } from "../../src/config.js"
 import ConcertCard from "../../src/Components/ConcertCard/ConcertCard.jsx"
 import "./Concerts.css"
 
-const API_URL = "https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&locale=*&size=12&relevance,asc&apikey=" + config.concert_key;
-
 function Concerts({ userCity }) {
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    let API_URL = "https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&locale=*&size=12&apikey=" + config.concert_key;
+    // switch(filter) {
+    //     case("relevancy"):
+    //         API_URL += "&relevance,asc";
+    //         console.log(API_URL);
+    //         break;
+    //     case("date"):
+    //         API_URL += "&date,asc";
+    //         console.log(API_URL);
+    //         break;
+    //     case("name"):
+    //         API_URL += "&name,asc";
+    //         break;
+    //     default:
+    //         break;
+    // }
   
     useEffect(() => {
       const searchConcerts = async (city) => {

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import SearchBar from "../../Components/SearchBar/SearchBar"
+import Radio from "../../Components/Radio/Radio"
 import Concerts from "../../api/Concerts.js"
 import videoBg from "../../assets/background2.mp4"
 import "../../App.css"
@@ -10,6 +11,7 @@ import SeeMoreButton from "../../Components/SeeMoreButton/SeeMoreButton.js"
 function Home() {
 
     const [searchQuery, setSearchQuery] = useState("");
+    const [selected, setSelected] = useState("");
     const contentWrapperRef = useRef(null);
 
     useEffect(() => {
@@ -52,18 +54,21 @@ function Home() {
                         <h1>FILTER BY</h1>
                         <br/>
                         <div className="radio-btns">
-                            <div>
-                                <input type="radio" name="filter" value="relevancy" id="relevancy"/>
-                                <label htmlFor="relevancy">relevancy</label>
+                            <Radio value="relevancy" selected={selected} text="relevancy" onChange={setSelected}/>
+                            <Radio value="date" selected={selected} text="date" onChange={setSelected}/>
+                            <Radio value="name" selected={selected} text="name" onChange={setSelected}/>
+                            {/* <div>
+                                <input type="radio" name="filter" value="relevancy" id="relevancy" onClick={setFilter}/>
+                                <label className="check" htmlFor="relevancy">relevancy</label>
                             </div>
                             <div>
-                                <input type="radio" name="filter" value="date" id="date"/>
+                                <input type="radio" name="filter" value="date" id="date" onClick={setFilter}/>
                                 <label htmlFor="date">date</label>
                             </div>
                             <div>
-                                <input type="radio" name="filter" value="name" id="name"/>
+                                <input type="radio" name="filter" value="name" id="name" onClick={setFilter}/>
                                 <label htmlFor="name">name</label>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
