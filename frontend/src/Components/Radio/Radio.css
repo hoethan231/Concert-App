@@ -10,7 +10,7 @@
     height: 18px;
     min-width: 18px;
     min-height: 18px;
-    border: 2px solid #0d5bc6;
+    border: 2px solid #284B63;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -23,7 +23,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #0d5bc6;
+    background-color: #284B63;
     transition: all 0.1s linear;
 }
 .unselected {

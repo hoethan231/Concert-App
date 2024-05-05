@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import SearchBar from "../../Components/SearchBar/SearchBar"
 import Radio from "../../Components/Radio/Radio"
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop"
 import Concerts from "../../api/Concerts.js"
 import videoBg from "../../assets/background2.mp4"
 import "../../App.css"
@@ -12,6 +13,7 @@ function Home() {
 
     const [searchQuery, setSearchQuery] = useState("");
     const [selected, setSelected] = useState("");
+    const [scrollHover, setScrollHover] = useState(false);
     const contentWrapperRef = useRef(null);
 
     useEffect(() => {
@@ -32,6 +34,7 @@ function Home() {
 
     return (
         <div className="home-container">
+            <ScrollToTop/>
             <div className="video-container">
                 <video src={videoBg} autoPlay loop muted />
             </div>
