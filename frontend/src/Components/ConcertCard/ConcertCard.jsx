@@ -3,7 +3,7 @@ import axios from "axios";
 import "./ConcertCard.css"
 
 
-const ConcertCard = ({ concert }) => {
+const ConcertCard = ({ concert, fromApi }) => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [favorites, setFavorites] = useState([]);
@@ -29,17 +29,23 @@ const ConcertCard = ({ concert }) => {
     });
 
     function isFavorite() {
-        return favorites.includes(concert.id);
+        for(let i=0; i<favorites.length; i++) {
+            if(favorites[i].id === dbConcert.id) {
+                return true;
+            }
+        }
+        return false;;
     }
 
     function get_image() {
-
+        if(!fromApi) {
+            return "https://via.placeholder.com/400";
+        }
         for(let i=0; i<concert.images.length; i++) {
             if(concert.images[i].ratio === "4_3") {
                 return concert.images[i].url;
             }
         }
-
         return "https://via.placeholder.com/400";
     }
 
@@ -47,7 +53,7 @@ const ConcertCard = ({ concert }) => {
         try {
             const response = await axios.put(`http://localhost:5555/${isFavorite() ? 'removeFavorite' : 'addFavorite'}`, 
             {
-                "favorites": concert.id
+                "favorites": dbConcert
             },
             { withCredentials: true });
             setIsAnimating(true); 
@@ -62,15 +68,23 @@ const ConcertCard = ({ concert }) => {
         setChangeColor(!changeColor);
     }
 
+    const dbConcert = (fromApi ? {
+        name: concert.name,
+        id: concert.id,
+        imageUrl: get_image(),
+        localDate: concert.dates.start.localDate,
+        localTime: concert.dates.start.localTime,
+        venueName: concert._embedded.venues[0].name
+    } : concert);
 
 
     return (
     <div className="card">
-        <p id="dates">{concert.dates.start.localDate}</p>
-        <img className="picture" src={get_image()} alt={concert.name}/>
-        <p>{concert.dates.start.localTime}</p>
-        <h2 >{concert.name}</h2>
-        <p id ="venue">{concert._embedded.venues[0].name}</p>
+        <p id="dates">{dbConcert.localDate}</p>
+        <img className="picture" src={dbConcert.imageUrl} alt={dbConcert.name}/>
+        <p>{dbConcert.localTime}</p>
+        <h2 >{dbConcert.name}</h2>
+        <p id ="venue">{dbConcert.venueName}</p>
         <p>{isLoggedIn}</p>
         {isLoggedIn && (
             <button 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./Settings.css"
 import defaultPfp from '../../assets/default_pfp.jpg';
-import { useNavigate } from 'react-router-dom';
 
 function Settings() {
     const navigate = useNavigate();
@@ -88,7 +88,7 @@ function Settings() {
                         <input type="checkbox" />
                         Receive weekly newsletter for concert updates?
                     </label>
-                    <button type="submit">Delete account</button>
+                    <button id="delete_button" type="submit">Delete account</button>
                     <p>Permanently delete your account and all of your content.</p>
                 </div>
               </form>

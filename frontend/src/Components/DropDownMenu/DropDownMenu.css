@@ -50,6 +50,7 @@
 
 .item a:hover {
     color: #82B8BB;
+    cursor: pointer;
 }
 
 .line {

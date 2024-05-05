@@ -144,9 +144,9 @@ app.put("/addFavorite", validateToken, async (request, response) => {
                 message: "Send all required fields: favorite"
             });
         }
-
+        const concert = request.body.favorites;
         const result = await User.findByIdAndUpdate( request.userID,
-                                                    { $addToSet: {favorites: request.body.favorites} },
+                                                    { $addToSet: {favorites: concert} },
                                                     { new: true });
 
         if (!result) {

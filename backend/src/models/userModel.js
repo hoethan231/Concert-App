@@ -19,10 +19,14 @@ const userSchema = mongoose.Schema(
             required: true,
             unique: true
         },
-        favorites: {
-            type: [String],
-            required: false
-        }
+        favorites: [{
+            name: String,
+            id: String,
+            imageUrl: String,
+            localDate: String,
+            localTime: String,
+            venueName: String
+        }]
     },
     {
         timestamps: true

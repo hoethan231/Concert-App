@@ -80,7 +80,7 @@
     width:50%;
 }
 
-.form button {
+#delete_button {
     width: 220px;
     height: 40px;
     border-radius: 11px;
@@ -110,4 +110,19 @@
 .btn-container{
     display: flex;
     flex-direction: column;
+}
+
+.logout {
+    text-decoration: none;
+    color: #F9F8F8;
+    background-color: #82B8BB;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-left: 10.5rem;
+    padding: 5px;
+    border-radius: 9px;
+    width: 10rem;
 }

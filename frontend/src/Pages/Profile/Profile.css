@@ -15,6 +15,7 @@
     width:auto;
     height: 180px;
     border-radius: 50%;
+    margin-left: 10rem;
 }
 
 .pfp-container h2 {
@@ -22,19 +23,7 @@
     text-align: center;
     font-weight: 800;
     padding-top: 15px;
-}
-
-.logout {
-    text-decoration: none;
-    color: #F9F8F8;
-    background-color: #82B8BB;
-    font-weight: 700;
-    font-size: 15px;
-    border: none;
-    cursor: pointer;
-    margin-top: 2rem;
-    padding: 5px;
-    border-radius: 9px;
+    margin-left: 10rem;
 }
 
 .logout:hover {
@@ -42,7 +31,7 @@
 }
 
 .saved-concerts-container{
-    margin-left: 5rem;
+    margin-left: 15rem;
     margin-top: 12rem;
     margin-bottom: 5rem;
 }
@@ -61,12 +50,15 @@
     font-size: 30px;
 }
 
+.saved-concerts::-webkit-scrollbar {
+    display: none;
+}
 
 .saved-concerts {
     background-color: rgba(249, 248, 248, 0.22);
     color: #F9F8F8;
     border-radius: 23px;
-    width: 60rem;
+    width: 66rem;
     height: 37rem;
     padding: 30px;
     overflow-y: auto;

@@ -46,7 +46,7 @@ function Concerts({ userCity }) {
         <div className="container">
           {concerts.map((concert) => {
             return (
-              <ConcertCard concert={concert}/>
+              <ConcertCard concert={concert} fromApi={true}/>
               )
             })}
         </div>
