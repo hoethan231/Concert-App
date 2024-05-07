@@ -51,9 +51,9 @@ function Settings() {
     return (
         <div className="setting-page">
           <div className='pfp-container'>
-              <img src={defaultPfp} alt="Profile Picture" />
-              {user && <h2>{(user.first + " " + user.last).toUpperCase()}</h2>}
-              <button className='logout' onClick={handleLogout}>Log Out</button>
+              <img id ="pfp" src={defaultPfp} alt="Profile Picture" />
+              {user && <h2 id="username">{(user.first + " " + user.last).toUpperCase()}</h2>}
+              <button className='logout' id="logout-btn" onClick={handleLogout}>Log Out</button>
           </div>
           <div className="setting-container">
           <h1>PROFILE</h1>

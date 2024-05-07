@@ -12,8 +12,7 @@ import SeeMoreButton from "../../Components/SeeMoreButton/SeeMoreButton.js"
 function Home() {
 
     const [searchQuery, setSearchQuery] = useState("");
-    const [selected, setSelected] = useState("");
-    const [scrollHover, setScrollHover] = useState(false);
+    const [selected, setSelected] = useState("relevancy");
     const contentWrapperRef = useRef(null);
     const [concertsError, setConcertsError] = useState(false);
 

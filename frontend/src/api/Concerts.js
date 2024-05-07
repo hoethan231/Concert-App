@@ -4,6 +4,7 @@ import ConcertCard from "../../src/Components/ConcertCard/ConcertCard.jsx"
 import "./Concerts.css"
 
 function Concerts({ userCity, selected, onError}) {
+
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -30,7 +31,7 @@ function Concerts({ userCity, selected, onError}) {
         if (city) {
             apiUrl += `&city=${city}`;
         }
-    
+
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) {

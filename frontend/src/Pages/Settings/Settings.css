@@ -10,8 +10,21 @@
 }
 
 .pfp-container {
-    margin-left: 140px; 
+    margin-left: 70px; 
     margin-bottom: 100px;
+}
+
+#pfp {
+    width: 180px;
+    height:auto;
+}
+
+#username {
+    margin-left: 105px;
+}
+
+#logout-btn {
+    margin-left: 108px;
 }
 
 .setting-container h1 {

@@ -12,10 +12,10 @@
 }
 
 .pfp-container img {
-    width:auto;
+    width: auto;
     height: 180px;
     border-radius: 50%;
-    margin-left: 10rem;
+    margin-left: 6rem;
 }
 
 .pfp-container h2 {
@@ -23,7 +23,7 @@
     text-align: center;
     font-weight: 800;
     padding-top: 15px;
-    margin-left: 10rem;
+    margin-left: 6rem;
 }
 
 .logout:hover {
@@ -48,7 +48,7 @@
 .saved-concerts-names h2{
     color: #284B63;
     font-weight: 800;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .saved-concerts::-webkit-scrollbar {
