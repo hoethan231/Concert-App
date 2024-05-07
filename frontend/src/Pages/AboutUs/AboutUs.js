@@ -9,7 +9,7 @@ function AboutUs() {
                 <image src/>
             </div>
             <div className="about-us">
-            <h1>HELLO!</h1>
+            <h1>HELLO !</h1>
             <p className= "description">
             We are a small team based at SJSU that developed this project for a kickstarter program.
              This is all of our first full stack project so it was difficult but was overall a great learning experience.
