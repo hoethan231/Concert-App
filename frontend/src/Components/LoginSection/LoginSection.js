@@ -8,6 +8,7 @@ function LoginSection(props) {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
+    const [incorrect, setIncorrect] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,9 +20,11 @@ function LoginSection(props) {
             { withCredentials: true});
             navigate("/");
             navigate(0);
+            setIncorrect(false);
         }
         catch (error) {
             console.log(error);
+            setIncorrect(true);
         }
 
     }
@@ -32,6 +35,11 @@ function LoginSection(props) {
                 <h1>Welcome <br/> Back.</h1>
                 <p>Please enter your details.</p>
             </div>
+            {incorrect && (
+                <div className='wrong-info'>
+                    <p id="info-text">Incorrect email or password.</p>
+                </div>
+            )}
             <div className="login-container">
                 <div className="form">
                     <form onSubmit={handleSubmit}>
@@ -41,7 +49,7 @@ function LoginSection(props) {
                         <input className="login-input" type="password" id="password" value={pass} onChange={(e) => setPass(e.target.value)}/>
                         <button className="signin-btn" type='submit'>Sign In</button>
                     </form>
-                    <button className="signup-button" onClick={() => props.onFormSwitch("signup")}>Don't have an account? Sign up</button>
+                    <button className="signup-button" onClick={() => props.onFormSwitch("signup")}>Don't have an account? <span>Sign up</span></button>
                 </div>
             </div>
         </div>
