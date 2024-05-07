@@ -1,12 +1,12 @@
 .card {
-    width: 230px;
-    height: 350px;
-    margin-right: 26px;
-    margin-bottom: 20px;
+    width: 14.375rem;
+    height: 21.875rem;
+    margin-right: 1.625rem;
+    margin-bottom: 1.25rem;
     position: relative;
-    border-radius: 25px;
+    border-radius: 1.563rem;
     overflow: hidden;
-    padding: 3px;
+    padding: 0.188rem;
     text-align: center;
     background-color: rgba(249, 248, 248, 0.7);
     transition: transform 0.3s ease;
@@ -18,34 +18,34 @@
 
 .picture {
     margin: 0.5rem;
-    border-radius: 25px;
-    width: 200px;
+    border-radius: 1.563rem;
+    width: 12.5rem;
 }
 
 .card h2 {
     font-weight: 800;
     text-align: left;
     color: #284B63;
-    padding: 5px 10px 5px 10px;
+    padding: 0.313rem 0.625rem 0.313rem 0.625rem;
 }
 
 .card p {
     text-align: left; 
-    margin-left: 10px;
+    margin-left: 0.625rem;
     color: #284B63;
     font-weight: 600;
 }
 
 #dates {
     position: absolute;
-    font-size: 16px;
+    font-size: 1;
     color: white;
     font-weight: 500;
-    top: 20px;
-    left: 20px;
+    top: 1.25rem;
+    left: 1.25rem;
     background-color: rgba(53, 53, 53, 0.9);
-    padding: 3px;
-    border-radius: 7px;
+    padding: 0.188rem;
+    border-radius: 0.438rem;
 
 }
 
@@ -54,7 +54,7 @@
     background-color: transparent;
     text-decoration: none;
     padding: 1rem;
-    font-size: 27px;
+    font-size: 1.688rem;
     color: darkgray;
     position: absolute;
     left: 69%;

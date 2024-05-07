@@ -1,35 +1,35 @@
 .setting-page{
     display: flex;
     justify-content: flex-start;
-    height: 1139px;
+    height: 71.188rem;
     background-image: url("../../assets/background.png");
     background-size: cover;
-    padding:20px;
+    padding:1.25rem;
     align-items: center;
     height:100vh;
 }
 
 .pfp-container {
-    margin-left: 70px; 
-    margin-bottom: 100px;
+    margin-left: 4.375rem; 
+    margin-bottom: 6.25rem;
 }
 
 #pfp {
-    width: 180px;
+    width: 11.25rem;
     height:auto;
 }
 
 #username {
-    margin-left: 105px;
+    margin-left: 6.563rem;
 }
 
 #logout-btn {
-    margin-left: 108px;
+    margin-left: 6.75rem;
 }
 
 .setting-container h1 {
-    margin-left:60px;
-    margin-top: 25px;
+    margin-left:3.75rem;
+    margin-top: 1.563rem;
     color: white;
     font-weight: 800;
 }
@@ -42,10 +42,10 @@
     width: 60%;
     height: 60%;
     background: rgba(249, 248, 248, 0.22);
-    border-radius: 23px;
+    border-radius: 1.438rem;
     top: 20%; 
-    margin-left: 150px;
-    padding:20px;
+    margin-left: 9.375rem;
+    padding:1.25rem;
 }
   
 .form {
@@ -62,7 +62,7 @@
 
 .form label {
     font-weight: 600;
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 1.5;
     color: white; 
 }
@@ -70,44 +70,44 @@
 
 .setting-text {
     width: 80%;
-    height: 50px;
+    height: 3.125rem;
     background: #FFFFFF;
-    border-radius: 11px;
+    border-radius: 0.688rem;
     border: none;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     box-sizing: border-box;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: left;
-    padding-left: 20px;
+    padding-left: 1.25rem;
     
 }
 
 .form-row {
     display: flex;
-    padding-top: 20px;
+    padding-top: 1.25rem;
 }
 
 .form-group {
-    padding:5px;
+    padding:0.313rem;
     width:50%;
 }
 
 #delete_button {
-    width: 220px;
-    height: 40px;
-    border-radius: 11px;
+    width: 13.75rem;
+    height: 2.5rem;
+    border-radius: 0.688rem;
     color: #FF8787;
     font-weight: 600;
-    font-size: 24px;
-    border: 2px solid #FF8787;
+    font-size: 1.5rem;
+    border: 0.125rem solid #FF8787;
     background-color: transparent;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 .form p {
-    margin-top: 10px;
+    margin-top: 0.625rem;
 }
 
 .newsletter {
@@ -116,8 +116,8 @@
 }
 
 .newsletter input {
-    width: 25px;
-    margin-right: 8px;
+    width: 1.563rem;
+    margin-right: 0.5rem;
 }
 
 .btn-container{
@@ -130,12 +130,12 @@
     color: #F9F8F8;
     background-color: #82B8BB;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 0.938rem;
     border: none;
     cursor: pointer;
     margin-top: 2rem;
     margin-left: 10.5rem;
-    padding: 5px;
-    border-radius: 9px;
+    padding: 0.313rem;
+    border-radius: 0.563rem;
     width: 10rem;
 }
