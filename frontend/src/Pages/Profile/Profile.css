@@ -31,7 +31,7 @@
 }
 
 .saved-concerts-container{
-    margin-left: 10rem;
+    margin-left: 5rem;
     margin-top: 12rem;
     margin-bottom: 5rem;
     margin-right: 10rem;
@@ -59,7 +59,7 @@
     background-color: rgba(249, 248, 248, 0.22);
     color: #F9F8F8;
     border-radius: 23px;
-    width: 66rem;
+    width: 50rem;
     height: 37rem;
     padding: 30px;
     overflow-y: auto;
