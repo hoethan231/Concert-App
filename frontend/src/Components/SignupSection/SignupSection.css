@@ -95,3 +95,9 @@ label {
 .button-login span:hover {
     color: #82B8BB;
 }
+
+.password-error-message {
+    color: white;
+    font-size: 17px;
+    padding-bottom: 10px;
+}

@@ -3,12 +3,10 @@ import { config } from "../../src/config.js"
 import ConcertCard from "../../src/Components/ConcertCard/ConcertCard.jsx"
 import "./Concerts.css"
 
-function Concerts({ userCity, selected }) {
+function Concerts({ userCity, selected, onError}) {
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
-    
 
     useEffect(() => {
         const searchConcerts = async (city) => {
@@ -42,9 +40,11 @@ function Concerts({ userCity, selected }) {
             setConcerts(data._embedded.events);
             setLoading(false);
             setError(null);
+            onError(false)
         } catch (error) {
             setError(error);
             setLoading(false);
+            onError(true);
         }
         };
     
@@ -52,7 +52,7 @@ function Concerts({ userCity, selected }) {
             searchConcerts(userCity);
         }
         
-    }, [userCity, selected]);
+    }, [userCity, selected, onError]);
 
     if (loading) {
     return <div>Loading...</div>;

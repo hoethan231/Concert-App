@@ -15,6 +15,7 @@ function Home() {
     const [selected, setSelected] = useState("");
     const [scrollHover, setScrollHover] = useState(false);
     const contentWrapperRef = useRef(null);
+    const [concertsError, setConcertsError] = useState(false);
 
     useEffect(() => {
         if(searchQuery) {
@@ -24,12 +25,18 @@ function Home() {
     
     const handleSubmit = (query) => {
         setSearchQuery(query);
+        setConcertsError(false);
     }
 
     const autoScroll = (ref) => {
         if (ref.current) {
             ref.current.scrollIntoView({ behavior: "smooth"});
         }
+    }
+
+    const handleConcertsError = (error) => {
+        console.log("Concerts error:", error);
+        setConcertsError(error); 
     }
 
     return (
@@ -44,14 +51,15 @@ function Home() {
                 </h1>
                 <p className="subtext">The ultimate destination for concert exploration</p>
                 <div className="search-container">
-                    <SearchBar onSearch={handleSubmit}/>
+                    <SearchBar onSearch={handleSubmit} />
+                    {(concertsError || !searchQuery) && <div className="search-error-message">{concertsError ? 'The city does not exist or there are no concerts in the area.' : 'Please enter a search.'}</div>}
                 </div>
             </div>
-            {searchQuery && (
+            {!concertsError && searchQuery && (
                 <div className="content-wrapper" ref={contentWrapperRef}>
                     <div className="concerts-container">
                         <h1 className = "concerts-near">CONCERTS NEAR <br/> <span>{searchQuery}</span></h1>
-                        <Concerts userCity={searchQuery} selected={selected}/>
+                        <Concerts userCity={searchQuery} selected={selected} onError={handleConcertsError} />
                     </div>  
                     <div className="filter-container">
                         <h1>FILTER BY</h1>
@@ -62,6 +70,7 @@ function Home() {
                             <Radio value="date" selected={selected} text="date" onChange={setSelected}/>
                         </div>
                     </div>
+                
                 </div>
             )}
         </div>

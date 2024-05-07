@@ -46,6 +46,9 @@ video {
 .search-container {
     margin-top: 40px;
     margin-bottom: 20px; 
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    align-items: left; /* Center items horizontally */
   }
 
 .concerts-near {
@@ -102,4 +105,11 @@ video {
     font-size: 20px;
     font-weight: 700;
     color: #284B63;
+}
+
+.search-error-message {
+    padding-top:20px;
+    font-size: 17px;
+    font-weight: 300;
+    color:white;
 }
