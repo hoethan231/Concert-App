@@ -19,10 +19,11 @@
 
 .nav-menu {
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(2, auto);
     grid-gap: 15px;
     list-style: none;
     text-align: center;
+    align-items: center;
     font-size: 1.3rem;
     width: 72vw;
     justify-content: end;
@@ -34,6 +35,9 @@
     text-decoration: none;
     padding: 0.5rem 1rem;
     font-weight: 600; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .profile-pic {
@@ -45,7 +49,7 @@
 }
 
 .nav-links:hover {
-    color:rgba(53, 53, 53, 0.6);
+    color: #82B8BB;
 }
 
 .fa-bars {

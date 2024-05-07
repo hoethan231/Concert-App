@@ -29,8 +29,8 @@ function LoginSection(props) {
     return (
         <div>
             <div className="welcome">
-                <h1>Welcome Back.</h1>
-                <p>Please enter your details</p>
+                <h1>Welcome <br/> Back.</h1>
+                <p>Please enter your details.</p>
             </div>
             <div className="login-container">
                 <div className="form">

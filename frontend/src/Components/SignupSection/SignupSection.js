@@ -35,7 +35,7 @@ function SignupSection(props) {
     <div>
       <div className="welcome">
         <h1>Welcome to Resonate.</h1>
-        <p>Please enter your details</p>
+        <p>Please enter your details.</p>
       </div>
       <div className="signup-container">
         <div className="form">
@@ -50,7 +50,7 @@ function SignupSection(props) {
             <input className="signup-input" type="password" id="password" value={pass} onChange={(e) => setPass(e.target.value)}/>
             <button className="signup-btn" type="submit">Sign Up</button>
           </form>
-          <button className="button-login" onClick={() => props.onFormSwitch("login")}>Already have an account? Log in</button>
+          <button className="button-login" onClick={() => props.onFormSwitch("login")}>Already have an account? <span>Log in</span></button>
         </div>
       </div>
     </div>

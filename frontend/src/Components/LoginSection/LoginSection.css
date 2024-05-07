@@ -1,5 +1,4 @@
 .welcome {
-    font-family: 'Raleway';
     font-weight: 800;
     font-size: 3rem;
     color: #65A4A8;
@@ -10,8 +9,8 @@
 
 .login-container {
     position: absolute;
-    right: 4%;
-    top: 20%;
+    right: 10%;
+    top: 25%;
     width: 38%;
     height: 400px;
     padding: 2rem;
@@ -42,6 +41,8 @@ button[type="submit"],
     border-radius: 8px;
     font-weight: 600;
     font-size: 1.6rem;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 .login-form {
