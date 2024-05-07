@@ -66,11 +66,15 @@ app.get("/logout", async (request, response) => {
 
 app.post("/createUser", async (request, response) => {
     try {
-
-        if( !request.body.first || !request.body.last || !request.body.password || !request.body.email ) {
+        if (!request.body.first || !request.body.last || !request.body.password || !request.body.email) {
             return response.status(400).send({
                 message: "Send all required fields: First, Last, Password, Email"
             });
+        }
+
+        const existingUser = await User.findOne({ email: request.body.email });
+        if (existingUser) {
+            return response.status(400).send({ message: "Email already exists" });
         }
 
         const hashedPass = await bcrypt.hash(request.body.password, 10);
@@ -85,13 +89,16 @@ app.post("/createUser", async (request, response) => {
 
         const user = await User.create(newUser);
         return response.status(200).send({ message: `${newUser.first} is now a user ` });
+    } catch (error) {
+        if (error.code === 11000 && error.keyPattern && error.keyPattern.email) {
+            return response.status(400).send({ message: "Email already exists" });
+        }
 
-    } 
-    catch (error) {
         console.log(error.message);
         response.status(500).send({ message: error.message });
     }
 });
+
 
 
 app.get("/getAllUsers", async (request, response) => {
