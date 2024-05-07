@@ -69,13 +69,6 @@ const ConcertCard = ({ concert, fromApi }) => {
         console.log(concert)
     }
 
-    function displayName(rawName) {
-        if(rawName.length > 30) {
-            return rawName.substring(0,30) + "...";
-        }
-        return rawName;
-    }
-
     const dbConcert = (fromApi ? {
         name: concert.name,
         id: concert.id,
@@ -91,7 +84,7 @@ const ConcertCard = ({ concert, fromApi }) => {
         <p id="dates">{dbConcert.localDate}</p>
         <img className="picture" src={dbConcert.imageUrl} alt={dbConcert.name}/>
         <p>{dbConcert.localTime}</p>
-        <h2 >{displayName(dbConcert.name)}</h2>
+        <h2 >{dbConcert.name}</h2>
         <p id ="venue">{dbConcert.venueName}</p>
         <p>{isLoggedIn}</p>
         {isLoggedIn && (
