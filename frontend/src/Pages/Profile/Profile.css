@@ -15,7 +15,7 @@
     width:auto;
     height: 180px;
     border-radius: 50%;
-    margin-left: 10rem;
+    margin-left: 5rem;
 }
 
 .pfp-container h2 {
@@ -23,7 +23,7 @@
     text-align: center;
     font-weight: 800;
     padding-top: 15px;
-    margin-left: 10rem;
+    margin-left: 5rem;
 }
 
 .logout:hover {
@@ -31,9 +31,10 @@
 }
 
 .saved-concerts-container{
-    margin-left: 15rem;
+    margin-left: 5rem;
     margin-top: 12rem;
     margin-bottom: 5rem;
+    margin-right: 10rem;
 }
 
 .saved-concerts-container h3 {
@@ -58,7 +59,7 @@
     background-color: rgba(249, 248, 248, 0.22);
     color: #F9F8F8;
     border-radius: 23px;
-    width: 66rem;
+    width: 50rem;
     height: 37rem;
     padding: 30px;
     overflow-y: auto;
