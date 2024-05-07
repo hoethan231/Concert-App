@@ -51,7 +51,7 @@ function Home() {
                 <p className="subtext">The ultimate destination for concert exploration</p>
                 <div className="search-container">
                     <SearchBar onSearch={handleSubmit} />
-                    {(concertsError || !searchQuery) && <div className="search-error-message">{concertsError ? 'The city does not exist or there are no concerts in the area.' : 'Please enter a search.'}</div>}
+                    {(concertsError || !searchQuery) && <div className="search-error-message">{concertsError ? 'The city does not exist or there are no concerts in the area.' : ''}</div>}
                 </div>
             </div>
             {!concertsError && searchQuery && (
