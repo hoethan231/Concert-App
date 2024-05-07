@@ -13,7 +13,7 @@ const ConcertCard = ({ concert, fromApi }) => {
     useEffect(() => {
         const cookieExists = document.cookie.includes("access-token");
         setIsLoggedIn(cookieExists);
-    });
+    }, []);
 
     useEffect(() => {
         const fetchFavorites = async () => {
@@ -24,17 +24,17 @@ const ConcertCard = ({ concert, fromApi }) => {
                 console.log('Error fetching favorites:', error);
             }
         };
-  
+
         fetchFavorites();
-    });
+    }, [favorites]);
 
     function isFavorite() {
         for(let i=0; i<favorites.length; i++) {
             if(favorites[i].id === dbConcert.id) {
                 return true;
-            }
+            };
         }
-        return false;;
+        return false;
     }
 
     function get_image() {
@@ -66,6 +66,14 @@ const ConcertCard = ({ concert, fromApi }) => {
     const onHeartClick = () => {
         handleFavorite();
         setChangeColor(!changeColor);
+        console.log(concert)
+    }
+
+    function displayName(rawName) {
+        if(rawName.length > 30) {
+            return rawName.substring(0,30) + "...";
+        }
+        return rawName;
     }
 
     const dbConcert = (fromApi ? {
@@ -83,7 +91,7 @@ const ConcertCard = ({ concert, fromApi }) => {
         <p id="dates">{dbConcert.localDate}</p>
         <img className="picture" src={dbConcert.imageUrl} alt={dbConcert.name}/>
         <p>{dbConcert.localTime}</p>
-        <h2 >{dbConcert.name}</h2>
+        <h2 >{displayName(dbConcert.name)}</h2>
         <p id ="venue">{dbConcert.venueName}</p>
         <p>{isLoggedIn}</p>
         {isLoggedIn && (

@@ -4,11 +4,10 @@ import ConcertCard from "../../src/Components/ConcertCard/ConcertCard.jsx"
 import "./Concerts.css"
 
 function Concerts({ userCity, selected }) {
+
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
-    
 
     useEffect(() => {
         const searchConcerts = async (city) => {
@@ -32,7 +31,7 @@ function Concerts({ userCity, selected }) {
         if (city) {
             apiUrl += `&city=${city}`;
         }
-    
+
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) {
