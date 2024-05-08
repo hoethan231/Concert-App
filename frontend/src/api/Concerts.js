@@ -3,7 +3,7 @@ import { config } from "../../src/config.js"
 import ConcertCard from "../../src/Components/ConcertCard/ConcertCard.jsx"
 import "./Concerts.css"
 
-function Concerts({ userCity, selected, onError}) {
+function Concerts({ userCity, selected, genre, onError}) {
 
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -13,6 +13,16 @@ function Concerts({ userCity, selected, onError}) {
         const searchConcerts = async (city) => {
         setLoading(true);
         let apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&locale=*&size=12&apikey=${config.concert_key}`;
+        
+        const genreIds = {
+            pop: "KnvZfZ7vAeA",
+            rock: "KnvZfZ7vAv6",
+            hipHop: "KnvZfZ7vAv1",
+            electronic: "KnvZfZ7vAvF",
+            country: "KnvZfZ7vAeI",
+            rAndB: "KnvZfZ7vAee",
+            indie: "KnvZfZ7vAeA"
+        };
         
         switch (selected) {
             case "relevancy":
@@ -30,6 +40,19 @@ function Concerts({ userCity, selected, onError}) {
     
         if (city) {
             apiUrl += `&city=${city}`;
+        }
+
+        if (genre !== "") {
+            try {
+                const genreId = genreIds[genre.toLowerCase()];
+                if (genreId) {
+                    apiUrl += `&genreId=${genreId}`;
+                    console.log("Got it!")
+                }
+
+            } catch (e){
+                console.log(e)
+            }
         }
 
         try {
@@ -53,7 +76,7 @@ function Concerts({ userCity, selected, onError}) {
             searchConcerts(userCity);
         }
         
-    }, [userCity, selected, onError]);
+    }, [userCity, selected, genre, onError]);
 
     if (loading) {
     return <div>Loading...</div>;

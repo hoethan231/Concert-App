@@ -1,4 +1,5 @@
 import React from 'react'
+// import groupPicture from "../../assets/groupPicture"
 import "./AboutUs.css"
 
 function AboutUs() {
@@ -6,7 +7,7 @@ function AboutUs() {
     return (
         <div className="about-page">
             <div className="image">
-                <image src/>
+                <image/>
             </div>
             <div className="about-us">
             <h1>HELLO !</h1>
