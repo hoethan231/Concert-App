@@ -59,14 +59,17 @@ function Home() {
                     <div className="concerts-container">
                         <h1 className = "concerts-near">CONCERTS NEAR <br/> <span>{searchQuery}</span></h1>
                         <Concerts userCity={searchQuery} selected={selected} onError={handleConcertsError} />
+                        <SeeMoreButton class="see-more-button"/>
                     </div>  
                     <div className="filter-container">
                         <h1>FILTER BY</h1>
                         <br/>
-                        <div className="radio-btns">
-                            <Radio value="relevancy" selected={selected} text="relevancy" onChange={setSelected}/>
-                            <Radio value="name" selected={selected} text="name" onChange={setSelected}/>
-                            <Radio value="date" selected={selected} text="date" onChange={setSelected}/>
+                        <div classname="radio-container">
+                            <div className="radio-btns">
+                                <Radio value="relevancy" selected={selected} text="relevancy" onChange={setSelected}/>
+                                <Radio value="name" selected={selected} text="name" onChange={setSelected}/>
+                                <Radio value="date" selected={selected} text="date" onChange={setSelected}/>
+                            </div>
                         </div>
                     </div>
                 
