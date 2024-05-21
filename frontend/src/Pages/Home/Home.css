@@ -73,7 +73,7 @@ video {
     flex: 1;
     max-height: 0rem;
     margin-left: 12.5rem;
-    
+    text-align: center;
 }
 
 .filter-container {
@@ -113,4 +113,28 @@ video {
     font-size: 1.063rem;
     font-weight: 300;
     color:white;
+}
+
+.see-more-button {
+    position: relative;
+    color:white;
+    background-color: transparent;
+    font-size: 2rem;
+    margin: 0 auto;
+    width: fit-content;
+    border: none;
+    padding-bottom: 20px;
+}
+
+.see-more-button::after {
+    content: "";
+    position: absolute;
+    bottom: -20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 20px 0; 
+    border-color: white transparent transparent; 
 }

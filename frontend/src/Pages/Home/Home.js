@@ -59,28 +59,30 @@ function Home() {
                     <div className="concerts-container">
                         <h1 className = "concerts-near">CONCERTS NEAR <br/> <span>{searchQuery}</span></h1>
                         <Concerts userCity={searchQuery} selected={selected} genre={genre} onError={handleConcertsError} />
+                        <SeeMoreButton class="see-more-button"/>
                     </div>  
                     <div className="filter-container">
-                        <h1>FILTER BY</h1>
-                        <br/>
-                        <h2>Sort</h2>
-                        <div className="radio-btns">
-                            <Radio value="relevancy" selected={selected} text="relevancy" onChange={setSelected}/>
-                            <Radio value="name" selected={selected} text="name" onChange={setSelected}/>
-                            <Radio value="date" selected={selected} text="date" onChange={setSelected}/>
-                        </div>
-                        <h2>Genre</h2>
-                        <div className="radio-btns">
-                            <Radio value="country" selected={genre} text="country" onChange={setGenre}/>
-                            <Radio value="electronic" selected={genre} text="electronic" onChange={setGenre}/>
-                            <Radio value="indie" selected={genre} text="indie" onChange={setGenre}/>
-                            <Radio value="hipHop" selected={genre} text="hipHop" onChange={setGenre}/>
-                            <Radio value="pop" selected={genre} text="pop" onChange={setGenre}/>
-                            <Radio value="rAndB" selected={genre} text="R&B/rock" onChange={setGenre}/>
-                            <Radio value="rock" selected={genre} text="rock" onChange={setGenre}/>
+                        <div classname="radio-container">
+                            <h1>FILTER BY</h1>
+                            <br/>
+                            <div className="radio-btns">
+                                <Radio value="relevancy" selected={selected} text="relevancy" onChange={setSelected}/>
+                                <Radio value="name" selected={selected} text="name" onChange={setSelected}/>
+                                <Radio value="date" selected={selected} text="date" onChange={setSelected}/>
+                            </div>
+                            <h1>Genre</h1>
+                            <br/>
+                            <div className="radio-btns">
+                                <Radio value="country" selected={genre} text="country" onChange={setGenre}/>
+                                <Radio value="electronic" selected={genre} text="electronic" onChange={setGenre}/>
+                                <Radio value="indie" selected={genre} text="indie" onChange={setGenre}/>
+                                <Radio value="hipHop" selected={genre} text="hipHop" onChange={setGenre}/>
+                                <Radio value="pop" selected={genre} text="pop" onChange={setGenre}/>
+                                <Radio value="rAndB" selected={genre} text="R&B/rock" onChange={setGenre}/>
+                                <Radio value="rock" selected={genre} text="rock" onChange={setGenre}/>
+                            </div>
                         </div>
                     </div>
-                
                 </div>
             )}
         </div>
