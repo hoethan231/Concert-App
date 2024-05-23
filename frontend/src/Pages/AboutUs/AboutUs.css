@@ -34,12 +34,13 @@
     color: #ffffff;
 }
 
-.image{
+.group-picture {
     position: absolute;
-    width: 37.5rem;
-    height: 37.5rem;
-    left: 15.625rem;
-    top: 10.625rem;
+    width: 35%;
+    height: auto;
+    left: 18rem;
+    top: 13rem;
+    border-radius: 15px;
     background: #ffffff;
     box-shadow: 22px 22px 6.1px #82B8BB;
 }

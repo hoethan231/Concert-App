@@ -1,5 +1,5 @@
 import React from 'react'
-// import groupPicture from "../../assets/groupPicture"
+import groupPicture from "../../assets/grouppicture.jpg"
 import "./AboutUs.css"
 
 function AboutUs() {
@@ -7,7 +7,7 @@ function AboutUs() {
     return (
         <div className="about-page">
             <div className="image">
-                <image/>
+                <img className="group-picture" src={groupPicture}/>
             </div>
             <div className="about-us">
             <h1>HELLO !</h1>
