@@ -19,7 +19,6 @@ function Concerts({ userCity, selected, genre, onError}) {
             rock: "KnvZfZ7vAv6",
             hipHop: "KnvZfZ7vAv1",
             electronic: "KnvZfZ7vAvF",
-            country: "KnvZfZ7vAeI",
             rAndB: "KnvZfZ7vAee",
             indie: "KnvZfZ7vAeA"
         };
@@ -47,7 +46,6 @@ function Concerts({ userCity, selected, genre, onError}) {
                 const genreId = genreIds[genre.toLowerCase()];
                 if (genreId) {
                     apiUrl += `&genreId=${genreId}`;
-                    console.log("Got it!")
                 }
 
             } catch (e){
@@ -83,7 +81,8 @@ function Concerts({ userCity, selected, genre, onError}) {
     }
 
     if (error) {
-    return <div>There are no concerts in {userCity}</div>
+        console.log("The problem is" + error)
+        return <div>There are no concerts in {userCity}</div>
     }
 
     return (

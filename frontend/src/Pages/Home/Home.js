@@ -11,11 +11,17 @@ import SeeMoreButton from "../../Components/SeeMoreButton/SeeMoreButton.js"
 
 function Home() {
 
-    const [searchQuery, setSearchQuery] = useState("");
-    const [selected, setSelected] = useState("relevancy");
-    const [genre, setGenre] = useState("");
+    const [searchQuery, setSearchQuery] = useState(sessionStorage.getItem("query") || "");
+    const [selected, setSelected] = useState(sessionStorage.getItem("filter") || "relevancy");
+    const [genre, setGenre] = useState(sessionStorage.getItem("genre") || "");
     const [concertsError, setConcertsError] = useState(false);
     const contentWrapperRef = useRef(null);
+
+    useEffect(() => {
+        sessionStorage.setItem("query", searchQuery);
+        sessionStorage.setItem("filter", selected);
+        sessionStorage.setItem("genre", genre);
+    }, [searchQuery, selected, genre]);
 
     useEffect(() => {
         if(searchQuery) {
@@ -73,7 +79,6 @@ function Home() {
                             <h1>Genre</h1>
                             <br/>
                             <div className="radio-btns">
-                                <Radio value="country" selected={genre} text="country" onChange={setGenre}/>
                                 <Radio value="electronic" selected={genre} text="electronic" onChange={setGenre}/>
                                 <Radio value="indie" selected={genre} text="indie" onChange={setGenre}/>
                                 <Radio value="hipHop" selected={genre} text="hipHop" onChange={setGenre}/>
