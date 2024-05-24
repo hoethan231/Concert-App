@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion";
 import SearchBar from "../../Components/SearchBar/SearchBar"
 import Radio from "../../Components/Radio/Radio"
 import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop"
