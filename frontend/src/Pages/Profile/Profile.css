@@ -26,10 +26,6 @@
     margin-left: 6rem;
 }
 
-.logout:hover {
-    background-color: #76a6a8;
-}
-
 .saved-concerts-container{
     margin-left: 10rem;
     margin-top: 12rem;
@@ -67,4 +63,63 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .pfp-container img {
+        width: auto;
+        height: 9.25rem;
+        margin-left: 4rem;
+    }
+
+    .pfp-container h2 {
+        margin-left: 4rem;
+    }
+
+    .saved-concerts{
+        width: 50rem;
+        height: 37rem;
+    }
+}
+
+@media (max-width: 1024px){
+    .pfp-container img {
+        width: auto;
+        height: 8.25rem;
+        margin-left: 4rem;
+    }
+
+    .pfp-container h2 {
+        margin-left: 4rem;
+    }
+
+    .saved-concerts-container h3 {
+        margin-left: -3rem;
+    }
+    
+    .saved-concerts{
+        width: 28rem;
+        height: 37rem;
+        margin-left: -3rem;
+    }
+}
+
+@media (max-width: 768px){
+    .pfp-container img {
+        display: none;
+    }
+
+    .pfp-container h2 {
+        display: none;
+    }
+
+    .saved-concerts-container h3 {
+        margin-left: -10rem;
+    }
+    
+    .saved-concerts{
+        width: 36rem;
+        height: 37rem;
+        margin-left: -10rem;
+    }
 }

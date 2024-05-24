@@ -64,7 +64,7 @@
     display: none;
 }
 
-/* @media screen and (max-width: 1010px) {
+@media screen and (max-width: 1010px) {
     .NavBarItems {
         position: absolute;
     }
@@ -83,7 +83,7 @@
     }
 
     .nav-menu.active {
-        background: #D9D9D9;
+        background: #284B63;
         left: 0;
         opacity: 1;
         transition: all 0.5s ease;
@@ -98,7 +98,7 @@
     }
 
     .nav-links:hover {
-        color:rgba(53, 53, 53, 0.6);
+        color:#82B8BB;
     }
 
     .navbar-logo {
@@ -135,10 +135,10 @@
     }
     
     .nav-links-mobile:hover {
-        color:rgba(53, 53, 53, 0.6);
+        color: #82B8BB;
     }
 
     Button {
         display: none;
     }
-} */
+}

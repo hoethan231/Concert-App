@@ -10,7 +10,7 @@
     color: #65A4A8;
     font-size: 6rem;
     font-weight: 800;
-    text-align: center; 
+    text-align: left; 
     text-shadow: 0px 2px 22.2px rgba(0, 0, 0, 0.25);
 }
 
@@ -25,11 +25,13 @@
 
 
 .description{
+    text-align: left;
     margin-top: 1.563rem;
     color: #ffffff;
 }
 
 .description-names{
+    text-align: left;
     margin-top: 1.563rem;
     color: #ffffff;
 }
@@ -40,7 +42,96 @@
     height: auto;
     left: 18rem;
     top: 13rem;
-    border-radius: 15px;
+    border-radius: 5px;
     background: #ffffff;
-    box-shadow: 22px 22px 6.1px #82B8BB;
+    box-shadow: 20px 20px 4.1px #82B8BB;
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .about-us h1 {
+        font-size: 4rem;
+        margin-left: 2rem;
+        white-space: nowrap;
+    }
+    .about-us p {
+        font-size: 0.9rem;
+        margin-left: 2rem;
+        margin-right: -2rem;
+    }
+    .group-picture{
+        width: 32%;
+        height: auto;
+        left: 12rem;
+        top: 12rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .about-us h1 {
+        font-size: 5rem;
+        margin-left: -3.2rem;
+        margin-top: 28rem;
+        white-space: nowrap;
+    }
+    .about-us p {
+        font-size: 0.9rem;
+        margin-left: -12rem;
+        text-align: center;
+        margin-right: -6rem;
+    }
+    .description-names {
+        padding-bottom: 5rem;
+    }
+    .group-picture{
+        width: 50%;
+        height: auto;
+        left: 15rem;
+        top: 12rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-us h1 {
+        font-size: 5rem;
+        margin-left: 1rem;
+        margin-top: 18rem;
+        white-space: nowrap;
+    }
+    .about-us p {
+        font-size: 0.9rem;
+        margin-left: -2.5rem;
+        text-align: center;
+        margin-right: -10rem;
+    }
+    .description-names {
+        padding-bottom: 5rem;
+    }
+    .group-picture{
+        left: 12rem;
+        top: 10rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .about-us h1 {
+        font-size: 4rem;
+        margin-left: 7rem;
+        margin-top: 12rem;
+        white-space: nowrap;
+    }
+    .about-us p {
+        font-size: 0.8em;
+        margin-left: 4rem;
+        text-align: center;
+        margin-right: -18rem;
+    }
+    .description-names {
+        padding-bottom: 5rem;
+    }
+    .group-picture{
+        width: 80%;
+        left: 2rem;
+        top: 8rem;
+        box-shadow: 10px 10px 4.1px #82B8BB;
+    }
 }
