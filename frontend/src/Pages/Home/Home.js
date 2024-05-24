@@ -14,6 +14,7 @@ function Home() {
     const [searchQuery, setSearchQuery] = useState(sessionStorage.getItem("query") || "");
     const [selected, setSelected] = useState(sessionStorage.getItem("filter") || "relevancy");
     const [genre, setGenre] = useState(sessionStorage.getItem("genre") || "");
+    const [seeMore, setSeeMore] = useState(false);
     const [concertsError, setConcertsError] = useState(false);
     const contentWrapperRef = useRef(null);
 
@@ -44,6 +45,10 @@ function Home() {
         setConcertsError(error); 
     }
 
+    const handleSeeMore = () => {
+        setSeeMore(!seeMore);
+    }
+
     return (
         <div className="home-container">
             <ScrollToTop/>
@@ -64,8 +69,8 @@ function Home() {
                 <div className="content-wrapper" ref={contentWrapperRef}>
                     <div className="concerts-container">
                         <h1 className = "concerts-near">CONCERTS NEAR <br/> <span>{searchQuery}</span></h1>
-                        <Concerts userCity={searchQuery} selected={selected} genre={genre} onError={handleConcertsError} />
-                        <SeeMoreButton class="see-more-button"/>
+                        <Concerts userCity={searchQuery} selected={selected} genre={genre} seeMore={seeMore} onError={handleConcertsError} />
+                        <SeeMoreButton class="see-more-button" onClick={handleSeeMore}/>
                     </div>  
                     <div className="filter-container">
                         <div classname="radio-container">
@@ -79,9 +84,10 @@ function Home() {
                             <h1>Genre</h1>
                             <br/>
                             <div className="radio-btns">
+                                <Radio value="" selected={genre} text="all" onChange={setGenre}/>
                                 <Radio value="electronic" selected={genre} text="electronic" onChange={setGenre}/>
                                 <Radio value="indie" selected={genre} text="indie" onChange={setGenre}/>
-                                <Radio value="hipHop" selected={genre} text="hipHop" onChange={setGenre}/>
+                                <Radio value="hipHop" selected={genre} text="hiphop" onChange={setGenre}/>
                                 <Radio value="pop" selected={genre} text="pop" onChange={setGenre}/>
                                 <Radio value="rAndB" selected={genre} text="R&B/rock" onChange={setGenre}/>
                                 <Radio value="rock" selected={genre} text="rock" onChange={setGenre}/>
@@ -95,4 +101,4 @@ function Home() {
 }
 
 export default Home;
-
+ 

@@ -3,7 +3,7 @@ import { config } from "../../src/config.js"
 import ConcertCard from "../../src/Components/ConcertCard/ConcertCard.jsx"
 import "./Concerts.css"
 
-function Concerts({ userCity, selected, genre, onError}) {
+function Concerts({ userCity, selected, genre, seeMore, onError}) {
 
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ function Concerts({ userCity, selected, genre, onError}) {
     useEffect(() => {
         const searchConcerts = async (city) => {
         setLoading(true);
-        let apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&locale=*&size=12&apikey=${config.concert_key}`;
+        let apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&locale=*&apikey=${config.concert_key}`;
         
         const genreIds = {
             pop: "KnvZfZ7vAeA",
@@ -53,6 +53,12 @@ function Concerts({ userCity, selected, genre, onError}) {
             }
         }
 
+        if(seeMore) {
+            apiUrl += "&size=60";
+        } else {
+            apiUrl += "&size=12";
+        }
+
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) {
@@ -74,7 +80,7 @@ function Concerts({ userCity, selected, genre, onError}) {
             searchConcerts(userCity);
         }
         
-    }, [userCity, selected, genre, onError]);
+    }, [userCity, selected, genre, seeMore, onError]);
 
     if (loading) {
     return <div>Loading...</div>;
@@ -87,7 +93,7 @@ function Concerts({ userCity, selected, genre, onError}) {
 
     return (
     (concerts?.length > 0) ? (
-        <div className="container">
+        <div className={seeMore ? "moreContainer" : "container"}>
         {concerts.map((concert) => {
             return (
             <ConcertCard concert={concert} fromApi={true}/>

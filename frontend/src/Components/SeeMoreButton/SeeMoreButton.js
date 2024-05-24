@@ -4,7 +4,7 @@ import "./SeeMoreButton.css"
 function SeeMoreButton({ onClick }) {
   return (
     <div>
-      <button onClick={onClick} className="see-more-button">
+      <button onClick={onClick} className="see-more-button" >
         See More
       </button>
     </div>
