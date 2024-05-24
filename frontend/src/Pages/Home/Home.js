@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion";
 import SearchBar from "../../Components/SearchBar/SearchBar"
 import Radio from "../../Components/Radio/Radio"
 import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop"
@@ -12,7 +13,7 @@ import SeeMoreButton from "../../Components/SeeMoreButton/SeeMoreButton.js"
 function Home() {
 
     const [searchQuery, setSearchQuery] = useState(sessionStorage.getItem("query") || "");
-    const [selected, setSelected] = useState(sessionStorage.getItem("filter") || "relevancy");
+    const [selected, setSelected] = useState(sessionStorage.getItem("filter") || "relevance,desc");
     const [genre, setGenre] = useState(sessionStorage.getItem("genre") || "");
     const [seeMore, setSeeMore] = useState(false);
     const [concertsError, setConcertsError] = useState(false);
@@ -73,13 +74,13 @@ function Home() {
                         <SeeMoreButton class="see-more-button" onClick={handleSeeMore}/>
                     </div>  
                     <div className="filter-container">
-                        <div classname="radio-container">
+                        <div className="radio-container">
                             <h1>FILTER BY</h1>
                             <br/>
                             <div className="radio-btns">
-                                <Radio value="relevancy" selected={selected} text="relevancy" onChange={setSelected}/>
-                                <Radio value="name" selected={selected} text="name" onChange={setSelected}/>
-                                <Radio value="date" selected={selected} text="date" onChange={setSelected}/>
+                                <Radio value="relevance,desc" selected={selected} text="relevancy" onChange={setSelected}/>
+                                <Radio value="name,asc" selected={selected} text="name" onChange={setSelected}/>
+                                <Radio value="date,asc" selected={selected} text="date" onChange={setSelected}/>
                             </div>
                             <h1>Genre</h1>
                             <br/>

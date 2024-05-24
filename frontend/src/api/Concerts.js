@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion";
 import { config } from "../../src/config.js"
 import ConcertCard from "../../src/Components/ConcertCard/ConcertCard.jsx"
 import "./Concerts.css"
@@ -12,7 +13,7 @@ function Concerts({ userCity, selected, genre, seeMore, onError}) {
     useEffect(() => {
         const searchConcerts = async (city) => {
         setLoading(true);
-        let apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&locale=*&apikey=${config.concert_key}`;
+        let apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&size=${seeMore ? "60" : "12"}${city ? `&city=${city}` : ""}&sort=${selected}&locale=*&apikey=${config.concert_key}`;
         
         const genreIds = {
             pop: "KnvZfZ7vAeA",
@@ -22,24 +23,6 @@ function Concerts({ userCity, selected, genre, seeMore, onError}) {
             rAndB: "KnvZfZ7vAee",
             indie: "KnvZfZ7vAeA"
         };
-        
-        switch (selected) {
-            case "relevancy":
-                apiUrl += "&sort=relevance,desc";
-                break;
-            case "date":
-                apiUrl += "&sort=date,asc";
-                break;
-            case "name":
-                apiUrl += "&sort=name,asc";
-                break;
-            default:
-                break;
-        }
-    
-        if (city) {
-            apiUrl += `&city=${city}`;
-        }
 
         if (genre !== "") {
             try {
@@ -51,12 +34,6 @@ function Concerts({ userCity, selected, genre, seeMore, onError}) {
             } catch (e){
                 console.log(e)
             }
-        }
-
-        if(seeMore) {
-            apiUrl += "&size=60";
-        } else {
-            apiUrl += "&size=12";
         }
 
         try {
@@ -93,12 +70,12 @@ function Concerts({ userCity, selected, genre, seeMore, onError}) {
 
     return (
     (concerts?.length > 0) ? (
-        <div className={seeMore ? "moreContainer" : "container"}>
-        {concerts.map((concert) => {
-            return (
-            <ConcertCard concert={concert} fromApi={true}/>
-            )
-            })}
+        <div className="container">
+            {concerts.map((concert) => {
+                return (
+                <ConcertCard concert={concert} fromApi={true}/>
+                )
+                })}
         </div>
     ) : (
         <div className="empty">
