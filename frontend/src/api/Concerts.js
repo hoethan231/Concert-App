@@ -69,7 +69,6 @@ function Concerts({ userCity, selected, genre, seeMore, onError }) {
                         exit={{ opacity: 0 }}
                         className="loading"
                     >
-                        Loading...
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -100,7 +99,6 @@ function Concerts({ userCity, selected, genre, seeMore, onError }) {
                         {concerts.map((concert, i) => (
                             <motion.div
                                 key={concert.id}
-                                layout
                                 initial={{ opacity: 0, translateX: -50 }}
                                 animate={{ opacity: 1, translateX: 0 }}
                                 exit={{ opacity: 0, translateX: 50 }}
