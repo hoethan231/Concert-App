@@ -1,137 +1,121 @@
 .about-page{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     min-height: 100vh;
     background-image: url("../../assets/background.png");
     background-size: cover;
 }
 
-.about-us h1 { 
+.wrapper {
+    margin: 10rem auto;
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.about-text h1 { 
     color: #65A4A8;
-    font-size: 6rem;
+    font-size: 5rem;
     font-weight: 800;
     text-align: left; 
     text-shadow: 0px 2px 22.2px rgba(0, 0, 0, 0.25);
 }
 
-.about-us{
-    margin-top: 18.75rem;
-    text-align: center;
-    margin-right: 21.875rem;
-    width: 25%;
-    height: 45%;
-    color: #65A4A8;
-}
-
-
-.description{
-    text-align: left;
-    margin-top: 1.563rem;
-    color: #ffffff;
-}
-
-.description-names{
+.about-text p{
     text-align: left;
     margin-top: 1.563rem;
     color: #ffffff;
 }
 
 .group-picture {
-    position: absolute;
-    width: 35%;
-    height: auto;
-    left: 18rem;
-    top: 13rem;
+    max-width: 35rem;
     border-radius: 5px;
+    margin-right: 5rem;
     background: #ffffff;
     box-shadow: 20px 20px 4.1px #82B8BB;
 }
 
-@media (min-width: 1025px) and (max-width: 1440px) {
-    .about-us h1 {
+@media (max-width: 1398px) {
+    .group-picture{
+        max-width: 28rem;
+    }
+
+    .about-text h1 {
         font-size: 4rem;
-        margin-left: 2rem;
-        white-space: nowrap;
-    }
-    .about-us p {
-        font-size: 0.9rem;
-        margin-left: 2rem;
-        margin-right: -2rem;
-    }
-    .group-picture{
-        width: 32%;
-        height: auto;
-        left: 12rem;
-        top: 12rem;
     }
 }
 
-@media (max-width: 1024px) {
-    .about-us h1 {
-        font-size: 5rem;
-        margin-left: -3.2rem;
-        margin-top: 28rem;
-        white-space: nowrap;
-    }
-    .about-us p {
-        font-size: 0.9rem;
-        margin-left: -12rem;
-        text-align: center;
-        margin-right: -6rem;
-    }
-    .description-names {
-        padding-bottom: 5rem;
-    }
+@media (max-width: 1104px) {
     .group-picture{
-        width: 50%;
-        height: auto;
-        left: 15rem;
-        top: 12rem;
+        max-width: 25rem;
+    }
+
+    .about-text h1 {
+        font-size: 3.5rem;
+    }
+
+    .about-text p {
+        font-size: 0.85rem;
+    }
+}
+@media (max-width: 992px) {
+    .group-picture{
+        box-shadow: 15px 15px 4.1px #82B8BB;
+        max-width: 23rem;
+    }
+
+    .about-text h1 {
+        font-size: 2.7rem;
+    }
+
+    .about-text p {
+        font-size: 0.8rem;
     }
 }
 
-@media (max-width: 768px) {
-    .about-us h1 {
-        font-size: 5rem;
-        margin-left: 1rem;
-        margin-top: 18rem;
-        white-space: nowrap;
+@media (max-width: 876px) {
+
+    .wrapper{
+        display:contents;
     }
-    .about-us p {
-        font-size: 0.9rem;
-        margin-left: -2.5rem;
-        text-align: center;
-        margin-right: -10rem;
-    }
-    .description-names {
-        padding-bottom: 5rem;
-    }
+
     .group-picture{
-        left: 12rem;
-        top: 10rem;
+        margin: 0;
+    }
+
+    .about-text {
+        margin: 2rem 5rem;
+    }
+    .about-text h1 {
+        text-align: center;
+    }
+
+    .about-text p {
+        text-align: center;
     }
 }
 
-@media (max-width: 425px) {
-    .about-us h1 {
-        font-size: 4rem;
-        margin-left: 7rem;
-        margin-top: 12rem;
-        white-space: nowrap;
+@media (max-width: 550px) {
+
+    .wrapper{
+        display:contents;
     }
-    .about-us p {
-        font-size: 0.8em;
-        margin-left: 4rem;
-        text-align: center;
-        margin-right: -18rem;
-    }
-    .description-names {
-        padding-bottom: 5rem;
-    }
+
     .group-picture{
-        width: 80%;
-        left: 2rem;
-        top: 8rem;
-        box-shadow: 10px 10px 4.1px #82B8BB;
+        max-width: 18rem;
+        box-shadow: 10px 10px 3.1px #82B8BB;
+    }
+
+    .about-text {
+        margin: 2rem 5rem;
+    }
+    .about-text h1 {
+        font-size: 2.rem;
+    }
+
+    .about-text p {
+        font-size: 0.8rem;
     }
 }
