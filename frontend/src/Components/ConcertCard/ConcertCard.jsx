@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
 import "./ConcertCard.css"
 
@@ -9,6 +10,7 @@ const ConcertCard = ({ concert, fromApi }) => {
     const [favorites, setFavorites] = useState([]);
     const [changeColor, setChangeColor] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     
     useEffect(() => {
         const cookieExists = document.cookie.includes("access-token");
@@ -80,21 +82,29 @@ const ConcertCard = ({ concert, fromApi }) => {
 
 
     return (
-    <div className="card">
-        <p id="dates">{dbConcert.localDate}</p>
-        <img className="picture" src={dbConcert.imageUrl} alt={dbConcert.name}/>
-        <p>{dbConcert.localTime}</p>
-        <h2 >{dbConcert.name}</h2>
-        <p id ="venue">{dbConcert.venueName}</p>
-        <p>{isLoggedIn}</p>
-        {isLoggedIn && (
-            <button 
-                onClick = {onHeartClick} 
-                className={`heart ${((changeColor === true) || isFavorite()) ? 'red' : ''}`}>
-                <i className="fa fa-heart"></i>
-        </button>)}
+        <>
+            <motion.div layout onClick={() => setIsOpen(!isOpen)} className={isOpen ? "largeCard" : "card"}>
+                {!isOpen && <>
+                    <p id="dates">{dbConcert.localDate}</p>
+                    <img className="picture" src={dbConcert.imageUrl} alt={dbConcert.name}/>
+                    <p>{dbConcert.localTime}</p>
+                    <h2 >{dbConcert.name}</h2>
+                    <p id ="venue">{dbConcert.venueName}</p>
+                    <p>{isLoggedIn}</p>
+                    {isLoggedIn && (
+                        <button 
+                            onClick = {onHeartClick} 
+                            className={`heart ${((changeColor === true) || isFavorite()) ? 'red' : ''}`}>
+                            <i className="fa fa-heart"></i>
+                    </button>)}
+                </>}
+                {isOpen && <>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti molestias aliquam laboriosam esse hic sunt velit vero laudantium excepturi voluptates quidem, eveniet, assumenda error temporibus consectetur! Exercitationem tenetur expedita nobis.</p>
+                </>}
 
-    </div>
+            </motion.div>
+            {isOpen && <div className="placeHolder"/>}
+        </>
     )
 
 }

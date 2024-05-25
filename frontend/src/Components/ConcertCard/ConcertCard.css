@@ -12,7 +12,34 @@
     transition: transform 0.3s ease;
 }
 
+.largeCard {
+  width: 20rem;
+  height: 25rem;
+  margin-right: 1.625rem;
+  margin-bottom: 1.25rem;
+  z-index: 1;
+  position: absolute;
+  border-radius: 1.563rem;
+  overflow: hidden;
+  padding: 0.188rem;
+  text-align: center;
+  background-color: rgba(249, 248, 248, 0.7);
+  transition: transform 0.3s ease;
+}
+
+.placeHolder {
+    width: 14.375rem;
+    height: 21.875rem;
+    margin-right: 1.625rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    border-radius: 1.563rem;
+    opacity: 0;
+    z-index: -1;
+}
+
 .card:hover {
+    cursor: pointer;
     transform: scale(110%);
 }
 
