@@ -5,11 +5,10 @@ import ConcertCard from "../../src/Components/ConcertCard/ConcertCard.jsx";
 import "./Concerts.css";
 
 function Concerts({ userCity, selected, genre, seeMore, onError }) {
+
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const prevGenreRef = useRef(genre);
-    const prevSelectedRef = useRef(selected);
 
     useEffect(() => {
         const searchConcerts = async (city) => {
@@ -57,6 +56,15 @@ function Concerts({ userCity, selected, genre, seeMore, onError }) {
             searchConcerts(userCity);
         }
     }, [userCity, selected, genre, seeMore, onError]);
+
+    if(error) {
+        return (
+            <>
+                <h1 className="errorMessage1">There are no {genre !== "all" ? genre : ""} concerts in "{userCity}"</h1>
+                <h3 className="errorMessage2">Try checking out Oakland!</h3>
+            </>
+        );
+    };
 
     return (
         <>

@@ -42,7 +42,8 @@ function Home() {
     }
 
     const handleConcertsError = (error) => {
-        setConcertsError(error); 
+        setConcertsError(error);
+        console.log(error)
     }
 
     const handleSeeMore = () => {
@@ -62,22 +63,21 @@ function Home() {
                 <p className="subtext">The ultimate destination for concert exploration</p>
                 <div className="search-container">
                     <SearchBar onSearch={handleSubmit} />
-                    {(concertsError || !searchQuery) && <div className="search-error-message">{concertsError ? 'The city does not exist or there are no concerts in the area.' : ''}</div>}
                 </div>
             </div>
-            {!concertsError && searchQuery && (
+            {searchQuery && (
                 <div className="content-wrapper" ref={contentWrapperRef}>
                     <div className="concerts-container">
                         <h1 className = "concerts-near">CONCERTS NEAR <br/> <span>{searchQuery}</span></h1>
                         <Concerts userCity={searchQuery} selected={selected} genre={genre} seeMore={seeMore} onError={handleConcertsError} />
-                        <SeeMoreButton class="see-more-button" onClick={handleSeeMore}/>
+                        {!concertsError && <SeeMoreButton class="see-more-button" onClick={handleSeeMore}/>}
                     </div>  
                     <div className="filter-container">
                         <div className="radio-container">
                             <h1>FILTER BY</h1>
                             <br/>
                             <div className="radio-btns">
-                                <Radio value="relevance,desc" selected={selected} text="relevancy" onChange={setSelected}/>
+                                <Radio value="relevance,desc" selected={selected} text="relevance" onChange={setSelected}/>
                                 <Radio value="name,asc" selected={selected} text="name" onChange={setSelected}/>
                                 <Radio value="date,asc" selected={selected} text="date" onChange={setSelected}/>
                             </div>
