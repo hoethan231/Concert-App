@@ -102,8 +102,17 @@ label {
     padding-bottom: 0.625rem;
 }
 
-@media (min-width: 768px) and (max-width: 1440px) {
+@media (min-width: 768px) and (max-width: 1594px) {
     .welcome{
         margin-left: 0rem;
+        font-size: 2.65rem;
+    }
+    
+    .signup-container{
+        height: 68%;
+    }
+
+    .signup-input{
+        height: 2.75rem;
     }
 }

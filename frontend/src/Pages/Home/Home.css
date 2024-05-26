@@ -142,7 +142,7 @@ video {
     border-color: white transparent transparent; 
 }
 
-@media (min-width: 768px) and (max-width: 1440px) {
+@media (min-width: 768px) and (max-width: 1594px) {
 
     .tagline {
         font-size: 4.5rem;
@@ -156,8 +156,8 @@ video {
 
     .concerts-near {
         font-size: 4.5rem;
-        margin-left: 1rem;
         white-space: nowrap;
+        margin-left: 4rem;
     }
 
     .concerts-container {

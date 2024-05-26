@@ -55,14 +55,22 @@
     background-color: rgba(249, 248, 248, 0.22);
     color: #F9F8F8;
     border-radius: 1.438rem;
-    width: 66rem;
+    width: 62rem;
     height: 37rem;
-    padding: 1.875rem;
+    padding: 1.875rem 0 1.875rem 1.875rem;
+
     overflow-y: auto;
     overflow-x: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+}
+
+@media (max-width: 1716px) {
+    .saved-concerts{
+        width: 60rem;
+        height: 37rem;
+    }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
@@ -77,12 +85,34 @@
     }
 
     .saved-concerts{
-        width: 50rem;
+        width: 40rem;
         height: 37rem;
     }
 }
 
-@media (max-width: 1024px){
+@media (max-width: 1594px){
+    .pfp-container img {
+        width: auto;
+        height: 8.25rem;
+        margin-left: 6rem;
+    }
+
+    .pfp-container h2 {
+        margin-left: 6rem;
+    }
+
+    .saved-concerts-container h3 {
+        margin-left: -3rem;
+    }
+    
+    .saved-concerts{
+        width: 56rem;
+        height: 37rem;
+        margin-left: -3rem;
+    }
+}
+
+@media (max-width: 1404px){
     .pfp-container img {
         width: auto;
         height: 8.25rem;
@@ -98,7 +128,16 @@
     }
     
     .saved-concerts{
-        width: 28rem;
+        width: 42rem;
+        height: 37rem;
+        margin-left: -3rem;
+    }
+}
+
+@media (max-width: 1178px){
+    
+    .saved-concerts{
+        width: 30rem;
         height: 37rem;
         margin-left: -3rem;
     }
