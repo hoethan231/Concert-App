@@ -69,14 +69,15 @@ function Home() {
                     </div>  
                     <div className="filter-container">
                         <div classname="radio-container">
-                            <h1>FILTER BY</h1>
+                            <h1>SORT BY</h1>
                             <br/>
                             <div className="radio-btns">
                                 <Radio value="relevancy" selected={selected} text="relevancy" onChange={setSelected}/>
                                 <Radio value="name" selected={selected} text="name" onChange={setSelected}/>
                                 <Radio value="date" selected={selected} text="date" onChange={setSelected}/>
                             </div>
-                            <h1>Genre</h1>
+                            <br/>
+                            <h1>GENRE</h1>
                             <br/>
                             <div className="radio-btns">
                                 <Radio value="electronic" selected={genre} text="electronic" onChange={setGenre}/>
