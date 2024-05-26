@@ -23,16 +23,11 @@ function Home() {
         sessionStorage.setItem("filter", selected);
         sessionStorage.setItem("genre", genre);
     }, [searchQuery, selected, genre]);
-
-    useEffect(() => {
-        if(searchQuery) {
-            autoScroll(contentWrapperRef);
-        }
-    }, [searchQuery]);
     
     const handleSubmit = (query) => {
         setSearchQuery(query);
         setConcertsError(false);
+        autoScroll(contentWrapperRef);
     }
 
     const autoScroll = (ref) => {
