@@ -24,7 +24,7 @@
     width: 40%;
     background: rgba(249, 248, 248, 0.22);
     border-radius: 4.75rem;
-    top: 10%; 
+    top: 18%; 
     padding: 1.438rem 0;
 }
   
@@ -50,7 +50,7 @@ label {
 
 .signup-input {
     width: calc(100% - 0.5rem);
-    height: 2.5rem;
+    height: 3.5rem;
     background: #FFFFFF;
     border-radius: 0.688rem;
     border: none;
@@ -100,4 +100,19 @@ label {
     color: white;
     font-size: 1.063rem;
     padding-bottom: 0.625rem;
+}
+
+@media (min-width: 768px) and (max-width: 1594px) {
+    .welcome{
+        margin-left: 0rem;
+        font-size: 2.65rem;
+    }
+    
+    .signup-container{
+        height: 68%;
+    }
+
+    .signup-input{
+        height: 2.75rem;
+    }
 }

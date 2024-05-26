@@ -1,6 +1,6 @@
 .card {
-    width: 14.375rem;
-    height: 21.875rem;
+    width: 13rem;
+    height: 19.782rem;
     margin-right: 1.625rem;
     margin-bottom: 1.25rem;
     position: relative;
@@ -46,7 +46,7 @@
 .picture {
     margin: 0.5rem;
     border-radius: 1.563rem;
-    width: 12.5rem;
+    width: 12rem;
 }
 
 .card h2 {
@@ -75,7 +75,7 @@
     color: white;
     font-weight: 500;
     top: 1.25rem;
-    left: 1.25rem;
+    left: 0.75rem;
     background-color: rgba(53, 53, 53, 0.9);
     padding: 0.188rem;
     border-radius: 0.438rem;
@@ -124,3 +124,49 @@
 .heart.red {
     color: #cc4b37;
 }
+
+@media (min-width: 769px) and (max-width: 1594px){
+  .card {
+    width: 12rem;
+    height: 18.26rem;
+  }
+
+  .picture {
+    width: 10.5rem; 
+  }
+
+  .heart {
+    left: 65%;
+    bottom: 79%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 10rem;
+    height: 15.21rem;
+    border-radius: 1rem;
+  }
+
+  .picture {
+    width: 9rem; 
+    border-radius: 0.8rem;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    font-size: 0.75rem;
+  }
+
+  #dates {
+      top: 1rem;
+      left: 0.4rem;
+      padding: 0.188rem;
+      border-radius: 0.238rem;
+
+  }
+}
+
