@@ -67,7 +67,6 @@
     color: white; 
 }
 
-
 .setting-text {
     width: 80%;
     height: 3.125rem;
@@ -138,4 +137,26 @@
     padding: 0.313rem;
     border-radius: 0.563rem;
     width: 10rem;
+}
+
+@media (min-width: 769px) and (max-width: 1594px){
+    #pfp{
+        width: 10rem;
+    }
+
+    #username {
+        margin-left: 6rem;
+    }
+    
+    #logout-btn {
+        margin-left: 5.7rem;
+    }
+
+    .form {
+        margin-top: 0.1rem;
+    }
+    .setting-container {
+        width: 60%;
+        height: 70%;
+    }
 }

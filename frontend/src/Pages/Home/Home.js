@@ -76,7 +76,8 @@ function Home() {
                                 <Radio value="name,asc" selected={selected} text="name" onChange={setSelected}/>
                                 <Radio value="date,asc" selected={selected} text="date" onChange={setSelected}/>
                             </div>
-                            <h1>Genre</h1>
+                            <br/>
+                            <h1>GENRE</h1>
                             <br/>
                             <div className="radio-btns">
                                 <Radio value="" selected={genre} text="all" onChange={setGenre}/>
