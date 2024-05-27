@@ -5,3 +5,14 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
+.errorMessage1 {
+  color: white;
+  margin-top: 10rem;
+  text-align: center;
+}
+
+.errorMessage2 {
+  color: rgba(255, 255, 255, 0.58);
+  text-align: center;
+}

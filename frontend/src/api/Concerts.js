@@ -13,7 +13,7 @@ function Concerts({ userCity, selected, genre, seeMore, onError }) {
     useEffect(() => {
         const searchConcerts = async (city) => {
             setLoading(true);
-            let apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&size=${seeMore ? "60" : "12"}${city ? `&city=${city}` : ""}&sort=${selected}&locale=*&apikey=${config.concert_key}`;
+            let apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&size=${seeMore ? "45" : "15"}${city ? `&city=${city}` : ""}&sort=${selected}&locale=*&apikey=${config.concert_key}`;
 
             const genreIds = {
                 pop: "KnvZfZ7vAeA",
