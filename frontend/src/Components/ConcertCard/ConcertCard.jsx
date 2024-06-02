@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import axios from "axios";
-import "./ConcertCard.css"
+import "./ConcertCard.css";
+import Modal from "../Modal/Modal"
+import dateFormat, { masks } from "dateformat";
 
 
 const ConcertCard = ({ concert, fromApi }) => {
@@ -11,6 +12,8 @@ const ConcertCard = ({ concert, fromApi }) => {
     const [changeColor, setChangeColor] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [showMore, setShowMore] = useState(false);
+    var convertTime = require("convert-time");
     
     useEffect(() => {
         const cookieExists = document.cookie.includes("access-token");
@@ -65,11 +68,12 @@ const ConcertCard = ({ concert, fromApi }) => {
         }
     };
     
-    const onHeartClick = () => {
+    const onHeartClick = (event) => {
         handleFavorite();
         setChangeColor(!changeColor);
-        console.log(concert)
+        event.stopPropagation();
     }
+    
 
     const dbConcert = (fromApi ? {
         name: concert.name,
@@ -77,33 +81,59 @@ const ConcertCard = ({ concert, fromApi }) => {
         imageUrl: get_image(),
         localDate: concert.dates.start.localDate,
         localTime: concert.dates.start.localTime,
-        venueName: concert._embedded.venues[0].name
+        venueName: concert._embedded.venues[0].name,
+        url: concert.url,
+        note: concert.pleaseNote || " ",
+        priceMin: concert.priceRanges?.[0]?.min || " ",
+        priceMax: concert.priceRanges?.[0]?.max || " ",
+        ticketLimit: concert.ticketLimit?.info || "No Ticket Limit"
     } : concert);
 
+    const toggleShowMore = () => {
+        setShowMore(!showMore);
+    }
 
     return (
         <>
-            <motion.div layout onClick={() => setIsOpen(!isOpen)} className={isOpen ? "largeCard" : "card"}>
-                {!isOpen && <>
-                    <p id="dates">{dbConcert.localDate}</p>
-                    <img className="picture" src={dbConcert.imageUrl} alt={dbConcert.name}/>
-                    <p>{dbConcert.localTime}</p>
-                    <h2 >{dbConcert.name}</h2>
-                    <p id ="venue">{dbConcert.venueName}</p>
-                    <p>{isLoggedIn}</p>
-                    {isLoggedIn && (
-                        <button 
-                            onClick = {onHeartClick} 
-                            className={`heart ${((changeColor === true) || isFavorite()) ? 'red' : ''}`}>
-                            <i className="fa fa-heart"></i>
-                    </button>)}
-                </>}
-                {isOpen && <>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti molestias aliquam laboriosam esse hic sunt velit vero laudantium excepturi voluptates quidem, eveniet, assumenda error temporibus consectetur! Exercitationem tenetur expedita nobis.</p>
-                </>}
-
-            </motion.div>
-            {isOpen && <div className="placeHolder"/>}
+            <div onClick={() => setIsOpen(true)} className="card">
+                <p id="dates">{dateFormat(dbConcert.localDate, "mmmm dS")}</p>
+                <img className="picture" src={dbConcert.imageUrl} alt={dbConcert.name}/>
+                <p>{convertTime(dbConcert.localTime)}</p>
+                <h2 >{dbConcert.name}</h2>
+                <p id ="venue">{dbConcert.venueName}</p>
+                <p>{isLoggedIn}</p>
+                {isLoggedIn && (
+                    <button 
+                        onClick = {onHeartClick} 
+                        className={`heart ${((changeColor === true) || isFavorite()) ? 'red' : ''}`}>
+                        <i className="fa fa-heart"></i>
+                </button>)}
+            </div>
+                {fromApi && <Modal open = {isOpen} onClose={() => setIsOpen(false)}>
+                    <h2>{dbConcert.name}</h2>
+                    <div className="allInfo">
+                        <img src={dbConcert.imageUrl} alt={dbConcert.name}/>
+                        <div className="openInfo">
+                            <p><span>Important Event Info: </span>
+                                {showMore ? dbConcert.note : `${dbConcert.note.substring(0,200)}${dbConcert.note.length > 200 ? '...' : ' '}`}
+                                {dbConcert.note.length > 200 && (
+                                    <button id="showMore" onClick={toggleShowMore}>
+                                        {showMore ? "show less" : "show more"}
+                                    </button>
+                                )}
+                            </p>
+                            <p><span>Date:</span> {dateFormat(dbConcert.localDate, "mmmm dS")} @ {convertTime(dbConcert.localTime)}</p>
+                            <p id ="venue"><span>Venue:</span> {dbConcert.venueName}</p>
+                            <p><span>Price Range: </span> 
+                                ${Number(dbConcert.priceMin).toFixed(2)} - ${Number(dbConcert.priceMax).toFixed(2)}
+                            </p>
+                            <p>{dbConcert.ticketLimit}</p>
+                            <a href={dbConcert.url} target="_blank">
+                                <button id="getTickets"> get tickets</button>
+                            </a>
+                        </div>
+                    </div>
+                </Modal>}
         </>
     )
 

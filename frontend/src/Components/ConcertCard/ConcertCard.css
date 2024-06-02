@@ -12,30 +12,67 @@
     transition: transform 0.3s ease;
 }
 
-.largeCard {
-  width: 20rem;
-  height: 25rem;
-  margin-right: 1.625rem;
-  margin-bottom: 1.25rem;
-  z-index: 1;
-  position: absolute;
-  border-radius: 1.563rem;
-  overflow: hidden;
-  padding: 0.188rem;
-  text-align: center;
-  background-color: rgba(249, 248, 248, 0.7);
-  transition: transform 0.3s ease;
+.openInfo {
+  text-align: left;
 }
 
-.placeHolder {
-    width: 14.375rem;
-    height: 21.875rem;
-    margin-right: 1.625rem;
-    margin-bottom: 1.25rem;
-    position: relative;
-    border-radius: 1.563rem;
-    opacity: 0;
-    z-index: -1;
+.allInfo {
+  display: flex;
+  align-items: flex-start;
+}
+
+.openInfo p {
+  font-size: 1.3rem;
+  margin: 1rem;
+  margin-right: 1.5rem;
+}
+
+.openInfo span {
+  font-weight: 600;
+}
+
+#showMore {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #5a75c0;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+#getTickets {
+  margin-left: 1rem;
+  font-size: 1.3rem;
+  padding: 0.5rem 0.8rem;
+  color: white;
+  background-color: #284B63;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+#getTickets:hover{
+  background-color: #82B8BB;
+}
+
+.modal img{
+    margin: 0.5rem;
+    margin-left: 1.5rem;
+    border-radius: 0.8rem;
+    width: 25rem;
+    display: flex;
+    height: auto;
+    justify-content: left;
+    flex-shrink: 0;
+}
+
+.modal h2{
+  color: #284B63;
+  font-weight: 800;
+  text-align: left;
+  margin: 1rem;
+  margin-left: 1.5rem;
+  font-size: 2rem;
 }
 
 .card:hover {

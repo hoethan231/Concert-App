@@ -5,7 +5,7 @@ function SeeMoreButton({ onClick }) {
   return (
     <div>
       <button onClick={onClick} className="see-more-button" >
-        See More
+        SEE MORE
       </button>
     </div>
   )
